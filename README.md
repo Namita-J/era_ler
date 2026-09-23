@@ -3,27 +3,27 @@ Overview
 
 This repository contains the data, scripts, and outputs for Chapter 2 of my PhD thesis. The chapter builds on the meta-analysis of Adam et al. (2025), which established how moisture variability, system composition, and agronomic practices drive intercropping performance (LER) across Africa. Chapter 2 takes those relationships and asks: where across Sub-Saharan Africa does intercropping consistently outperform sole cropping, and what environmental conditions govern this?
 
-The analysis draws on the Evidence for Resilient Agriculture (ERA) database (Rosenstock et al., 2024) — 112,859 geolocated observations from 2,011 agricultural studies in Africa (1934–2018) — as the primary data source, and uses NEX-GDDP-CMIP6 climate data to compute SPEI and project LER suitability under current and future climate scenarios.
+The analysis draws on the Evidence for Resilient Agriculture (ERA) database (Rosenstock et al., 2024) - 112,859 geolocated observations from 2,011 agricultural studies in Africa (1934–2018) - as the primary data source, and uses NEX-GDDP-CMIP6 climate data to compute SPEI and project LER suitability under current and future climate scenarios.
 
 Research Objectives
 
 Overall aim: To spatially predict and map the Land Equivalent Ratio (LER) of intercropping systems across Sub-Saharan Africa, identifying where intercropping consistently outperforms sole cropping and which environmental and agronomic factors govern this spatial variation.
 
-Objective 1 — Characterise the ERA intercropping dataset and its spatial coverage
+Objective 1 - Characterise the ERA intercropping dataset and its spatial coverage
 Extract and describe the intercropping subset from ERA (system types, LER distributions, geographic coverage, temporal range), assessing data sufficiency and representativeness across African agroecological zones. Identify gaps in the evidence base.
 
-Objective 2 — Model the relationship between LER and spatially explicit environmental and agronomic predictors
-Develop a predictive model linking observed LER to gridded covariates — aridity/SPEI, soil organic carbon, soil nitrogen, agroecological zone, rainfall seasonality — using ERA's geolocated observations. Model selection will consider mixed-effects regression, random forest, and geographically weighted regression approaches.
+Objective 2 - Model the relationship between LER and spatially explicit environmental and agronomic predictors
+Develop a predictive model linking observed LER to gridded covariates - aridity/SPEI, soil organic carbon, soil nitrogen, agroecological zone, rainfall seasonality - using ERA's geolocated observations. Model selection will consider mixed-effects regression, random forest, and geographically weighted regression approaches.
 
-Objective 3 — Spatially extrapolate predicted LER across Sub-Saharan Africa by intercropping system type
+Objective 3 - Spatially extrapolate predicted LER across Sub-Saharan Africa by intercropping system type
 Apply the validated model to continental-scale gridded environmental data to generate maps of predicted LER for key intercropping system categories (cereal+legume, root/tuber+legume, cereal+cereal), delineating zones of consistent intercropping advantage (LER > 1) and underperformance.
 
-Objective 4 — Assess spatial shifts in intercropping suitability under projected climate change
+Objective 4 - Assess spatial shifts in intercropping suitability under projected climate change
 Compare current LER suitability zones against NEX-GDDP-CMIP6 projections under SSP2-4.5 and SSP5-8.5 (2040–2069) to identify regions where climate change will expand or contract the advantage of intercropping over sole cropping.
 
 
 Workflow
-Stage 1 — Data Preparation
+Stage 1 - Data Preparation
 
 1.1 ERA data extraction
 
@@ -33,7 +33,7 @@ Extract outcome variable: Land Equivalent Ratio (LER)
 Extract covariates already in ERA: country, coordinates, study year, crop system type, soil properties, management details
 Output: clean intercropping subset with LER, coordinates, and metadata
 
-1.2 Climate data — historical SPEI
+1.2 Climate data - historical SPEI
 
 Download NEX-GDDP-CMIP6 historical daily precipitation (pr), maximum temperature (tasmax), and minimum temperature (tasmin) for 1950–2014
 For each ERA observation, extract seasonal climate values matching the reported study year and location
@@ -59,7 +59,7 @@ Join all above outputs into a single analysis-ready dataframe
 Quality checks: remove observations with missing LER, implausible coordinates, or missing key covariates
 Descriptive summary: sample size by system type, region, AEZ, and SPEI class
 Output: data/processed/ERA_intercrop_modelling_dataset.csv
-Stage 2 — Exploratory Analysis and Model Development
+Stage 2 - Exploratory Analysis and Model Development
 
 2.1 Descriptive and spatial analysis
 
@@ -83,7 +83,7 @@ Validate against held-out observations (20% split or LOOCV at study level)
 Assess spatial autocorrelation in residuals (Moran's I)
 Check for extrapolation beyond training data range using environmental space analysis (convex hull or MESS)
 Output: model performance metrics, residual maps, validation plots
-Stage 3 — Spatial Extrapolation (Current Climate)
+Stage 3 - Spatial Extrapolation (Current Climate)
 
 3.1 Prepare prediction grid
 
@@ -109,7 +109,7 @@ Output: predicted LER rasters per system type
 Derive binary suitability layer: LER > 1 (intercropping advantage) vs. LER ≤ 1
 Quantify area of intercropping advantage by AEZ, country, and region
 Output: outputs/maps/LER_predicted_[systemtype]_baseline.tif
-Stage 4 — Future Climate Scenarios
+Stage 4 - Future Climate Scenarios
 
 4.1 Compute future SPEI
 
