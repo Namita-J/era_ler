@@ -13,7 +13,7 @@ Objective 1 — Characterise the ERA intercropping dataset and its spatial cover
 Extract and describe the intercropping subset from ERA (system types, LER distributions, geographic coverage, temporal range), assessing data sufficiency and representativeness across African agroecological zones. Identify gaps in the evidence base.
 
 Objective 2 — Map environmental similarity and extrapolation confidence across Sub-Saharan Africa
-Compute Multivariate Environmental Similarity Surfaces (MESS) to quantify, for every grid cell across Sub-Saharan Africa, how similar local environmental conditions are to the range of conditions represented in the ERA intercropping trial observations. Identify regions of high extrapolation risk (novel environments) where predictions should be interpreted with caution.
+Compute Similarity scores to quantify, for every grid cell across Sub-Saharan Africa, how similar local environmental conditions are to the range of conditions represented in the ERA intercropping trial observations. 
 
 Objective 3 — Spatially extrapolate LER using analogue matching in environmental space
 For each grid cell, identify the k most environmentally similar ERA intercropping trial observations using distance-weighted k-nearest neighbour matching (Gower distance across SPEI, soil, and temperature covariates) and predict LER as the similarity-weighted mean of analogue observations. Generate system-specific LER maps (cereal+legume, root/tuber+legume, cereal+cereal) delineating zones of consistent intercropping advantage (LER > 1) and underperformance, paired with prediction uncertainty maps derived from analogue variance.
