@@ -9,7 +9,7 @@ Research Objectives
 
 Overall aim: To spatially predict and map the Land Equivalent Ratio (LER) of intercropping systems across Sub-Saharan Africa, identifying where intercropping consistently outperforms sole cropping and which environmental and agronomic factors govern this spatial variation.
 
-Objective 1 — Characterise the ERA intercropping dataset and its spatial coverage
+Objective 1 — Characterise the ERA intercropping dataset and its spatial coverage (https://namita-j.github.io/era_ler/r_scripts/era_ler_scoping.html)
 Extract and describe the intercropping subset from ERA (system types, LER distributions, geographic coverage, temporal range), assessing data sufficiency and representativeness across African agroecological zones. Identify gaps in the evidence base.
 
 Objective 2 — Map environmental similarity and extrapolation confidence across Sub-Saharan Africa
