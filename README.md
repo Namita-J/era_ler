@@ -3,7 +3,7 @@ Overview
 
 This repository contains the data, scripts, and outputs for Chapter 2 of my PhD thesis. The chapter builds on the meta-analysis of Adam et al. (2025), which established how moisture variability, system composition, and agronomic practices drive intercropping performance (LER) across Africa. Chapter 2 takes those relationships and asks: where across Sub-Saharan Africa does intercropping consistently outperform sole cropping, and what environmental conditions govern this?
 
-The analysis draws on the Evidence for Resilient Agriculture (ERA) database (Rosenstock et al., 2024) - 112,859 geolocated observations from 2,011 agricultural studies in Africa (1934–2018) - as the primary data source, and uses NEX-GDDP-CMIP6 climate data to compute SPEI and project LER suitability under current and future climate scenarios.
+The analysis draws on the Evidence for Resilient Agriculture (ERA) database (Rosenstock et al., 2024) - 112,859 geolocated observations from 2,011 agricultural studies in Africa (1934–2018).
 
 Research Objectives
 
