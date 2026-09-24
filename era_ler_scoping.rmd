@@ -1,0 +1,183 @@
+---
+title: "ERA_LER"
+author:
+  - name: "Namita Joshi"
+    email: "n.joshi@cgiar.org"
+    orcid: "0000-0002-1623-6910"
+
+date: "2026-09-24"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    self_contained: true
+---
+
+::: {style="display: flex; align-items: center; gap: 20px;"}
+<img src="images/Era_Logo_FINAL_Colour.png" width="100" style="margin-top: 10px;"/>
+:::
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = TRUE,  # Temporarily set to TRUE for debugging
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r packages,include=T,eval=T,echo=F}
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman")
+}
+pacman::p_load(
+  sf, knitr, rnaturalearth, rnaturalearthdata, 
+  ggplot2, viridis, shiny, dplyr, treemap, treemapify, plotly, data.table,
+  s3fs, arrow, devtools, gh, htmlwidgets,remotes,gridExtra, DT,tidyr,stringr,jsonlite,
+  googlesheets4 , lubridate
+)
+
+# Set a directory for downloaded data
+dl_dir <- "downloaded_data"
+
+# Create the directory if it doesn't already exist
+if(!dir.exists(dl_dir)){
+  dir.create(dl_dir, showWarnings = FALSE)
+}
+
+# Should the era vocab be updated?
+update_vocab<-T
+```
+# Exploring ERA
+## Downloading the data
+
+This section retrieves the most recent version of the ERA.Compiled comparisons table from the ERA S3 bucket, saves it locally, and loads it for use.
+
+```{r pre-load era compiled, echo=T, message=F}
+# Set S3 path and initialize
+s3 <- s3fs::S3FileSystem$new(anonymous = TRUE)
+era_s3 <- "s3://digital-atlas/era"
+bundle_dir <- file.path(era_s3, "data", "packaged")
+
+# Get the latest bundle
+all_files <- s3$dir_ls(bundle_dir)
+latest_bundle <- tail(sort(grep("era_agronomy_bundle.*\\.tar\\.gz$", all_files, value = TRUE)), 1)
+
+# Define download and extraction paths
+dl_dir <- "downloaded_data"
+dir.create(dl_dir, showWarnings = FALSE)
+bundle_local <- file.path(dl_dir, basename(latest_bundle))
+extract_dir <- file.path(dl_dir, tools::file_path_sans_ext(tools::file_path_sans_ext(basename(latest_bundle))))
+
+# Download and extract
+if (!file.exists(bundle_local)) {
+  s3$file_download(latest_bundle, bundle_local, overwrite = TRUE)
+}
+if (!dir.exists(extract_dir)) {
+  dir.create(extract_dir)
+  utils::untar(bundle_local, exdir = extract_dir)
+}
+
+# Locate files
+json_agronomic <- list.files(extract_dir, pattern = "^agronomic_.*\\.json$", full.names = TRUE)
+json_master <- list.files(extract_dir, pattern = "^era_master_codes.*\\.json$", full.names = TRUE)
+parquet_file <- list.files(extract_dir, pattern = "^era_compiled.*\\.parquet$", full.names = TRUE)
+
+# Load into variables
+ERA_Compiled <- arrow::read_parquet(parquet_file)
+agronomic_metadata <- fromJSON(json_agronomic)
+
+```
+
+```{r filter to LER, echo=T, message=F}
+LER<-ERA_Compiled[grepl('103',Outcode)]
+
+# Optional: check the result
+DT::datatable(
+  LER,
+  options = list(
+    scrollY = "400px",
+    scrollX = TRUE,
+    pageLength = 20,
+    fixedHeader = FALSE
+  )
+)
+
+
+```
+
+```{r plot, echo=T, message=F}
+LER <- LER %>%
+  mutate(
+    Latitude = as.numeric(Latitude),
+    Longitude = as.numeric(Longitude)
+  ) %>%
+  filter(!is.na(Latitude) & !is.na(Longitude))
+
+# Count the number of papers per country
+paper_counts <- LER %>%
+  group_by(Country) %>%
+  summarise(N_Papers = n_distinct(Code), .groups = "drop")
+
+# Load only African countries
+world <- ne_countries(scale = "medium", continent = "Africa", returnclass = "sf")
+
+# Fix Tanzania name if needed
+world <- world %>%
+  mutate(admin = if_else(admin == "United Republic of Tanzania", "Tanzania", admin))
+
+
+# Ensure CRS is consistent
+world <- st_transform(world, crs = 4326)
+
+# Convert combined_sites to spatial data
+sites_sf <- st_as_sf(LER, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE)
+
+# Join paper counts to map
+map_data <- world %>%
+  dplyr::select(admin, geometry) %>%
+  rename(Country = admin) %>%
+  left_join(paper_counts, by = "Country")
+
+# Plot the map
+map<- ggplot() +
+  geom_sf(data = map_data, aes(fill = N_Papers), color = "white") +
+  geom_point(data = sites_sf, aes(x = Longitude, y = Latitude), 
+             shape = 21, color = "black", fill = "white", size = 2, alpha = 0.5) +
+  scale_fill_viridis_c(
+    option = "mako",
+    direction = -1,
+    na.value = "gray95"
+  ) +
+  labs(fill = "LER Papers") +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",          # ⬅ Move to bottom
+    legend.direction = "horizontal",     # ⬅ Make it horizontal
+    legend.title = element_text(size = 12, face = "bold"),
+    legend.text = element_text(size = 10),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  guides(fill = guide_colorbar(
+    barwidth = 10, barheight = 0.5, title.position = "top", title.hjust = 0.5
+  )) +
+  coord_sf(xlim = c(-20, 55), ylim = c(-35, 38), expand = FALSE)
+
+# Display the map
+map
+
+unique(LER$Code)
+
+```
+
+We currently have 41 papers in ERA that explicitly report Land Equivalent Ratio (LER) as an outcome. However, LER can also be calculated from studies that report yield data for both crops under intercrop and monocrop conditions.
+For a two-crop intercrop:
+\[
+LER = \frac{Y_{1,IC}}{Y_{1,SC}} + \frac{Y_{2,IC}}{Y_{2,SC}}
+\]where \(Y_{IC}\) is the yield under intercropping and \(Y_{SC}\) is the yield of the same crop when grown as a sole crop.
+This means the evidence base can be expanded beyond the 41 studies that report LER directly, provided the necessary yield data are available.
