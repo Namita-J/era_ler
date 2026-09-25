@@ -38,7 +38,7 @@ Stage 1 - Data Preparation
 
 1.2 Climate data - historical SPEI
 
-- Download NEX-GDDP-CMIP6 historical daily precipitation (pr), maximum temperature (tasmax), and minimum temperature (tasmin) for 1950–2014
+- Download NEX-GDDP-CMIP6 historical daily precipitation (pr), maximum temperature (tasmax), and minimum temperature (tasmin)
 
 - For each ERA observation, extract seasonal climate values matching the reported study year and location
 
