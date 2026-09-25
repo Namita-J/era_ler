@@ -9,19 +9,19 @@ Research Objectives
 
 Overall aim: To spatially predict and map the Land Equivalent Ratio (LER) of intercropping systems across Sub-Saharan Africa, identifying where intercropping consistently outperforms sole cropping and which environmental and agronomic factors govern this spatial variation.
 
-Objective 1 — Characterise the ERA intercropping dataset and its spatial coverage (https://namita-j.github.io/era_ler/r_scripts/era_ler_scoping.html)
+Objective 1 - Characterise the ERA intercropping dataset and its spatial coverage (https://namita-j.github.io/era_ler/r_scripts/era_ler_scoping.html)
 Extract and describe the intercropping subset from ERA (system types, LER distributions, geographic coverage, temporal range), assessing data sufficiency and representativeness across African agroecological zones. Identify gaps in the evidence base.
 
-Objective 2 — Map environmental similarity and extrapolation confidence across Sub-Saharan Africa
+Objective 2 - Map environmental similarity and extrapolation confidence across Sub-Saharan Africa
 Compute Similarity scores to quantify, for every grid cell across Sub-Saharan Africa, how similar local environmental conditions are to the range of conditions represented in the ERA intercropping trial observations. 
 
-Objective 3 — Spatially extrapolate LER using analogue matching in environmental space
+Objective 3 - Spatially extrapolate LER using analogue matching in environmental space
 For each grid cell, identify the k most environmentally similar ERA intercropping trial observations using distance-weighted k-nearest neighbour matching (Gower distance across SPEI, soil, and temperature covariates) and predict LER as the similarity-weighted mean of analogue observations. Generate system-specific LER maps (cereal+legume, root/tuber+legume, cereal+cereal) delineating zones of consistent intercropping advantage (LER > 1) and underperformance, paired with prediction uncertainty maps derived from analogue variance.
 
-Objective 4 — Identify the dominant environmental drivers of spatial LER variation
+Objective 4 - Identify the dominant environmental drivers of spatial LER variation
 Using a complementary mixed-effects regression and variable importance analysis (random forest), quantify the relative contribution of aridity/SPEI, soil organic carbon, soil nitrogen, temperature, and agroecological zone to LER variation.
 
-Objective 5 — Assess spatial shifts in intercropping suitability under projected climate change
+Objective 5 - Assess spatial shifts in intercropping suitability under projected climate change
 Recompute environmental similarity and analogue-based LER predictions using NEX-GDDP-CMIP6 projections under SSP2-4.5 and SSP5-8.5 (2040–2069), identifying regions where climate change will expand or contract the advantage of intercropping over sole cropping.
 
 
@@ -66,7 +66,7 @@ Stage 1 - Data Preparation
   
 - Output: final datasey
   
-Stage 2 — Exploratory Analysis
+Stage 2 - Exploratory Analysis
 
 2.1 Descriptive and spatial analysis
 
@@ -88,7 +88,7 @@ Define the multivariate environmental space occupied by ERA intercropping trial 
 - Visualise coverage of environmental space
 - Identify underrepresented environmental conditions 
 
-Stage 3 — Similarity-Based LER Prediction
+Stage 3 - Similarity-Based LER Prediction
 
 3.1 Compute baseline similarity surface
 
