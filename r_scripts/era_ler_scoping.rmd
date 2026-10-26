@@ -192,105 +192,63 @@ ic_codes <- prac[Practice == "Intercropping", Code]
 prac[Code %in% ic_codes, .(Code, Practice, Subpractice)]
 ```
 
-### Selecting yield comparisons
+### Matching intercrop components to their monocrops
 
-A yield row (Outcode `101`) is usable when the **only** practice that differs between control and treatment (`plist`) is intercropping. In that case `MeanC` is the sole-crop yield and `MeanT` is the yield of the same crop within the intercrop. Rows where `plist` also contains another practice (e.g. `b21-b25`: intercrop + P fertiliser vs. sole crop without P) are confounded and dropped, as are rows where intercropping sits in `base.list` (both arms intercropped).
+ERA stores **pairwise comparisons** (control arm vs treatment arm), and two features of that structure mean neither the comparison rows alone nor the treatments alone are enough:
 
-```{r intercrop yield rows, echo=T, message=F}
-is_ic_only <- function(pl) sapply(strsplit(pl, "-"), function(x) all(x %in% ic_codes))
+- An intercrop component is often compared only with a *base* monocrop. In Bado et al. 2021 (AC0168), the intercrop millet with fertiliser F1 (`MC PM F1`) is only compared with unfertilised sole millet (`MM F0`), so `plist` mixes intercropping with fertiliser. The matching sole crop (`MM F1`) appears only as the treatment arm of a different comparison.
+- Some papers reuse one control ID for several sole crops. In Tsubo et al. 2003 (LM0141), sole maize at three densities (7.9, 9.0, 10.3 t/ha) all have control ID `T0`, so only the comparison row says which sole yield belongs to which intercrop density.
 
-IC_yield <- as.data.table(ERA_Compiled)[Outcode == "101" & is_ic_only(plist)]
-```
+The matching therefore works per intercrop component (`r_scripts/ler_matching.R`):
 
-### Pairing the component crops of an intercrop
+1. **Treatments.** Every arm of every yield row becomes a treatment record: paper × site × year × crop × treatment ID → yield(s), label and practice codes (`C1–C13` / `T1–T13`).
+   - A treatment is an intercrop if its practice codes include an intercropping code, or its label is shared with another crop and is not labelled sole.
+   - Arms whose label contradicts their practice codes (e.g. labelled `kale mono` but coded as intercrop) are excluded as `label_code_conflict`.
+   - A control whose label is identical to an intercrop component label of the same crop (e.g. `MZ- 2:2 rows-maize`) is an intercrop component, not a sole crop, and is never used as a denominator.
+   - A 0 recorded alongside non-zero yields for the same treatment is treated as a placeholder. Negative yields (digitising artefacts) are rejected.
+   - Yield rows whose **raw** ERA outcome is in LER units (`Crop Yield..t/ha..LER` in `Data.Out`) are not yields. The compiled table codes them as Outcode 101, so they are identified from the raw outcome and kept separately as reported LER.
+2. **Candidate monocrops.** These are sole treatments of the same crop in the same paper, site and year, with a compatible variety. The same experimental context is identified by:
+   - **label modifiers** that distinguish the candidate monocrops from each other (F0–F3, low/high density, sprayed/unsprayed, Soybean-10/20/30). These must all appear in the intercrop label.
+   - otherwise, **experimental-factor practice codes**: codes that vary between treatments of that crop (e.g. fertiliser, Ziziphus) must match. Codes that are constant within each arm (e.g. the intercrop is fertilised for the cereal and the sole legume is not) are design-level management. They are allowed and flagged `design_management_differs`.
+3. **Yields.** If ERA has a direct comparison row between the intercrop component and the matched monocrop, the yields paired in that row are used. Otherwise the monocrop yield is looked up from the treatment table.
+4. **Ambiguity is flagged, not guessed.** A component is rejected if it has more than one matching monocrop (`multiple_matching_monocrops`), more than one distinct intercrop/monocrop yield pair (`multiple_yield_pairs`), several yields for the same intercrop treatment (`multiple_intercrop_yields`), no monocrop (`no_matching_monocrop`), or only monocrops from a different treatment (`treatment_mismatch`).
 
-Each component crop of an intercrop is its own yield row. ERA writes the intercrop system into `T.Descrip` after `>>`, e.g. bean row `Bn in MB>>Bn in MB***Mz in MB` and maize row `Mz in MB>>Bn in MB***Mz in MB`. The text after `>>` (the **system ID**) is identical across components, so rows are paired on paper × site × year × system ID. Components inside the system ID are separated by `***` (or `..` in some papers), which gives the number of crops expected.
-
-LER for one system = sum over component crops of `MeanT / MeanC`. A system gets an LER only if:
-
-- every component crop has a yield row (a partial LER is not an LER),
-- there is exactly one row per crop. Where a crop has several rows in one system, they are narrowed down by (1) keeping the sole-crop control whose label matches that crop's intercrop label (e.g. sole `Soybean-10` for `Soybean-10 Int`), (2) keeping the row whose `Variety` is named in the system ID, and (3) keeping the row whose `TID` is shared with the other component crop. Rows still duplicated after this (unrecorded seasons, sites or planting dates) are flagged `multiple_rows_per_crop` for manual check,
-- `MeanC` is present and > 0.
+LER for one system = Σ pLER = Σ (intercrop yield / monocrop yield) over its component crops, calculated at full precision. A system gets an LER only if every component crop (from the system ID, ignoring non-crop tags such as `Zizi`) has exactly one valid pLER. Accepted systems where labels matched but ERA's practice codes for a factor disagree are flagged `factor_codes_differ_label_match`.
 
 ```{r ler functions, echo=T, message=F}
-sys_id <- function(td) ifelse(grepl(">>", td, fixed = TRUE), sub("^.*?>>", "", td), td)
+source("r_scripts/ler_matching.R")
+ERA_dt <- as.data.table(ERA_Compiled)
 
-n_components <- function(s) {
-  ifelse(grepl("***", s, fixed = TRUE), lengths(strsplit(s, "***", fixed = TRUE)),
-  ifelse(grepl("..", s, fixed = TRUE) & !grepl("...", s, fixed = TRUE), lengths(strsplit(s, "..", fixed = TRUE)),
-         NA_integer_))
-}
+# Papers with an intercrop arm anywhere in their yield data
+yld <- ERA_dt[Outcode == "101"]
+arm_cols <- c(paste0("C", 1:13), paste0("T", 1:13))
+ic_papers <- unique(yld[Reduce(`|`, lapply(arm_cols, function(k) get(k) %in% ic_codes)), Code])
 
-norm <- function(x) gsub("[^a-z0-9]", "", tolower(x))
+# Yield rows whose raw ERA outcome is in LER units ("Crop Yield..t/ha..LER", e.g. Kermah et al.
+# Table 7 reported LERs, Falconnier et al. Table 4 pLERs) are not yields: excluded here and kept
+# separately as reported LER / validation data
+ler_coded_idx <- ler_coded_index(ERA_dt, agronomic_metadata$Data.Out)
+reported_ler_raw <- as.data.table(agronomic_metadata$Data.Out)[grepl("[.][.]LER$", Out.Code.Joined),
+  .(Code = B.Code, Site.ID, Time, Crop = P.Product, T.Name, IN.Level.Name, LER = suppressWarnings(as.numeric(ED.Mean.T)),
+    Out.Code.Joined, DataLoc = ED.Data.Loc)]
 
-# Keep subset `keep` of a crop's rows only if it narrows them down without emptying them
-narrow <- function(keep) if (any(keep) && !all(keep)) keep else rep(TRUE, length(keep))
+ler_run <- calc_ler_systems(ERA_dt, ic_papers, exclude_index = ler_coded_idx)
 
-# Component yield rows per intercrop system, with duplicate rows of the same crop resolved
-ic_rows <- function(codes) {
-  y <- unique(IC_yield[Code %in% codes])
-  y <- y[!is.na(MeanC) & MeanC > 0 & !is.na(MeanT)]
-  y <- y[!duplicated(y[, .(Code, Site.ID, M.Year, T.Descrip, Product.Simple, MeanC, MeanT)])]
-  y[, sys := sys_id(T.Descrip)]
-  y[, comp := ifelse(grepl(">>", T.Descrip, fixed = TRUE), sub(">>.*$", "", T.Descrip), T.Descrip)]
+reported <- ERA_dt[grepl("103", Outcode), .(Code, Site.ID, M.Year, sys = sys_of(T.Descrip), LER_reported = MeanT)]
+reported <- reported[, .(LER_reported = paste(unique(round(LER_reported, 2)), collapse = "/")),
+                     by = .(Code, Site.ID, M.Year, sys)]
+ler_systems <- merge(ler_run$systems, reported, by = c("Code", "Site.ID", "M.Year", "sys"), all.x = TRUE)
 
-  # 1. control matches the crop's own intercrop label (e.g. sole "Soybean-10" <-> "Soybean-10 Int")
-  y[, ctl_ok := mapply(function(c, p) {
-    c <- norm(gsub("sole|mono(culture)?", "", c, ignore.case = TRUE))
-    nzchar(c) && grepl(c, norm(p), fixed = TRUE)
-  }, C.Descrip, comp)]
-  y <- y[y[, .I[narrow(ctl_ok)], by = .(Code, Site.ID, M.Year, sys, Product.Simple)]$V1]
-
-  # 2. variety named in the system ID (e.g. maize "Obatanpa" <-> "Obatanpa Int***Soybean-10 Int")
-  y[, var_ok := mapply(function(v, s) {
-    v <- norm(sub(" .*$", "", v))
-    !is.na(v) && nzchar(v) && grepl(v, norm(s), fixed = TRUE)
-  }, Variety, sys)]
-  y <- y[y[, .I[narrow(var_ok)], by = .(Code, Site.ID, M.Year, sys, Product.Simple)]$V1]
-
-  # 3. treatment ID shared with the other component crop(s)
-  y[, tid_ok := {
-    tids <- split(TID, Product.Simple)
-    sapply(seq_len(.N), function(i) any(TID[i] %in% unlist(tids[names(tids) != Product.Simple[i]])))
-  }, by = .(Code, Site.ID, M.Year, sys)]
-  y <- y[y[, .I[narrow(tid_ok)], by = .(Code, Site.ID, M.Year, sys, Product.Simple)]$V1]
-
-  y[, c("comp", "ctl_ok", "var_ok", "tid_ok") := NULL]
-  y
-}
-
-calc_ler <- function(codes) {
-  y <- ic_rows(codes)[, .(Code, Site.ID, M.Year, sys, Crop = Product.Simple, MeanC, MeanT, Units)]
-  g <- y[, .(
-    n_crops = uniqueN(Crop),
-    n_rows  = .N,
-    crops   = paste(sort(unique(Crop)), collapse = "-"),
-    pLER    = paste0(Crop, "=", round(MeanT / MeanC, 2), collapse = "; "),
-    LER     = round(sum(MeanT / MeanC), 2)
-  ), by = .(Code, Site.ID, M.Year, sys)]
-  g[, n_expected := n_components(sys)]
-  g[, status := fcase(
-    n_crops < 2,                                   "one_crop_only",
-    !is.na(n_expected) & n_crops < n_expected,     "missing_component",
-    n_rows > n_crops,                              "multiple_rows_per_crop",
-    default = "OK")]
-  g[status != "OK", LER := NA]
-
-  rep <- as.data.table(ERA_Compiled)[Code %in% codes & grepl("103", Outcode),
-    .(Code, Site.ID, M.Year, sys = sys_id(T.Descrip), LER_reported = MeanT)]
-  rep <- rep[, .(LER_reported = paste(unique(round(LER_reported, 2)), collapse = "/")),
-             by = .(Code, Site.ID, M.Year, sys)]
-  merge(g, rep, by = c("Code", "Site.ID", "M.Year", "sys"), all.x = TRUE)
-}
+calc_ler <- function(codes) ler_systems[Code %in% codes]
 ```
 
-### Worked example: one paper
+### Worked examples
 
-The test paper, LM0141 (Tsubo et al. 2003, maize–bean), also reports LER directly (Outcode `103`), so the calculated values can be checked against the paper's own.
+LM0141 (Tsubo et al. 2003, maize–bean) also reports LER directly (Outcode `103`), so the calculated values can be checked against the paper's own. Bado et al. 2021 (AC0168) shows the fertiliser (F0–F3) × Ziziphus design, where each intercrop is matched to the monocrop with the same fertiliser level and tree condition.
 
 ```{r ler worked example, echo=T, message=F}
-ler_check <- calc_ler("LM0141")
-knitr::kable(ler_check[, .(M.Year, sys, status, pLER, LER, LER_reported)])
+knitr::kable(calc_ler("LM0141")[, .(M.Year, sys, status, pLER, LER = round(LER, 3), LER_reported)])
+knitr::kable(calc_ler("AC0168")[M.Year == "2016", .(M.Year, sys, status, pLER, LER = round(LER, 3), qc_flag)])
 ```
 
 ## Papers cited in Adam et al. that are in ERA
@@ -335,13 +293,13 @@ adam_era <- data.table::fread(text = "ref,Code,note
 adam_ler <- calc_ler(adam_era$Code)
 
 adam_summary <- adam_ler[, .(
-  LER_calculable  = sum(status == "OK"),
-  multi_rows      = sum(status == "multiple_rows_per_crop"),
-  missing_comp    = sum(status %in% c("one_crop_only", "missing_component")),
+  LER_calculable      = sum(status == "OK"),
+  ambiguous           = sum(grepl("multiple|conflict", status)),
+  no_match_or_missing = sum(grepl("no_matching|mismatch|missing", status)),
   checked_vs_reported = sum(status == "OK" & !is.na(LER_reported))
 ), by = Code]
 adam_summary <- merge(adam_era, adam_summary, by = "Code", all.x = TRUE)
-adam_summary[is.na(LER_calculable), `:=`(LER_calculable = 0L, multi_rows = 0L, missing_comp = 0L, checked_vs_reported = 0L)]
+adam_summary[is.na(LER_calculable), `:=`(LER_calculable = 0L, ambiguous = 0L, no_match_or_missing = 0L, checked_vs_reported = 0L)]
 adam_summary[, reports_LER := Code %in% unique(ERA_Compiled$Code[grepl("103", ERA_Compiled$Outcode)])]
 
 knitr::kable(adam_summary[order(-LER_calculable)])
@@ -350,90 +308,263 @@ knitr::kable(adam_summary[order(-LER_calculable)])
 Calculated vs reported LER, where the paper reports both:
 
 ```{r adam validation, echo=T, message=F}
-knitr::kable(adam_ler[status == "OK" & !is.na(LER_reported), .(Code, M.Year, sys, pLER, LER, LER_reported)])
+knitr::kable(adam_ler[status == "OK" & !is.na(LER_reported), .(Code, M.Year, sys, pLER, LER = round(LER, 3), LER_reported)])
 ```
 
 ## Adding calculated LER rows to the LER data
 
-New rows are built in the same format as the reported ERA LER rows (Outcode `103`): `Units = "LER"`, `MeanC = 1` (sole crops), `MeanT` = LER, `yi = log(MeanT/MeanC)`, `pc = 100*(MeanT/MeanC - 1)`, `Product` = component crops joined with `-`, `Out.SubInd = "Land Equivalent Ratio"`. All other site/study fields are copied from the component yield rows. Two columns are added to flag provenance: `LER.Source` (`reported` / `calculated_yield` / `calculated_pLER`) and `pLER` (the partial LERs that were summed).
+New rows are built in the same format as the reported ERA LER rows (Outcode `103`): `Units = "LER"`, `MeanC = 1` (sole crops), `MeanT` = LER at full precision, `yi = log(MeanT/MeanC)`, `pc = 100*(MeanT/MeanC - 1)`, `Product` = component crops joined with `-`, and `Out.SubInd = "Land Equivalent Ratio"`. All other site and study fields are copied from the intercrop component's ERA row. `TID` holds the intercrop treatment IDs, and `CID` / `C.Descrip` hold the monocrop treatments used. Three columns are added:
 
-Included: systems with status `OK` from **all ERA papers** (not only the Adam et al. list) that do **not** already report LER in ERA, African sites only. Excluded: Watanabe 2019 (JO0076, natural fallow + pearl millet is not an intercrop) and van Asten 2011 (NN0311, coffee–banana perennial system). Calculated LERs were cross-checked against Adam et al.'s own values (matched on identical sole and intercrop yields) and agree within 0.01 for NN0232, NN0420, NN0445, NM0028, JO0011 and JO0001 (Berdjour, Sammaz systems). NM0030 (Songa 2007) is kept in full but needs QC: its maize–millet/sorghum systems give LERs of 0.06–0.9 (maize intercrop yield of 0).
+- `LER.Source`, in four categories:
+  - **A. `calculated_automatic`:** calculated from ERA yields, and all matching information exists in ERA.
+  - **B. `calculated_manual_qc`:** calculated from ERA yields, but ERA has lost or misassigned information needed to pair them, and the original publication resolves it. Every component and its source is in `qc_inputs/manual_qc_components.csv`, and `LER.QC` names the publication-sourced values.
+  - **C. `reported`:** LER reported directly (ERA Outcode 103). **`reported_raw`:** LER reported by the paper and kept in the raw extraction but dropped from the compiled table (see "Reported LER recovered from the raw extraction"). `reported_pLER_sum` is the sum of partial LERs reported by the paper (Falconnier et al. 2016), not recalculated from yields. Raw ERA LER-coded records entered under the yield outcome (Kermah et al. 2017, Table 7) are kept separately in `outputs/qc/reported_LER_raw_coded.csv` as validation data.
+  - **D. Unresolved:** not in the LER data; listed with reasons in `outputs/qc/LER_audit_systems.csv`.
+- `pLER`: the partial LERs that were summed, rounded to 3 decimals for display only.
+- `LER.QC`: QC flags on accepted systems.
+
+The full audit trail (intercrop and monocrop treatment IDs, labels, yields and practice codes, match basis and rejection reasons) is in `outputs/qc/LER_audit_components.csv` and `outputs/qc/LER_audit_systems.csv`.
+
+Included: systems with status `OK` from papers with African sites that do **not** already report LER in ERA. Excluded:
+
+- Watanabe 2019 (JO0076): natural fallow + pearl millet is not an intercrop.
+- van Asten 2011 (NN0311): coffee–banana perennial system.
+
+NM0030 (Songa 2007) is kept but needs QC: its maize–millet/sorghum systems give LERs of 0.06–0.9 (maize intercrop yield of 0).
 
 Falconnier et al. 2016 (DK0064, Adam ID DAR33) reports only partial LERs (Table 4). ERA captured these as Outcode `101` with `Units = Mg/ha` and no `MeanC`, which is a coding error: they are pLERs, not yields. LER = cereal grain pLER + cowpea grain pLER per intercropping pattern, exactly as Adam did. Cowpea **fodder** pLERs are excluded, so these are grain LERs.
 
 ```{r ler new rows, echo=T, message=F}
-ERA_dt <- as.data.table(ERA_Compiled)
-
 product_subtype <- function(crops) {
   st <- unique(ERA_dt[Product.Simple %in% crops, .(Product.Simple, Product.Subtype)])
   paste(sort(unique(st$Product.Subtype)), collapse = "-")
 }
 
-# Build one LER row per system from its component yield rows
-make_ler_rows <- function(comp, ler_tab, source) {
-  out <- comp[, {
-    tmpl <- .SD[1]
-    crops <- sort(unique(unlist(strsplit(Product.Simple, "-"))))
-    tmpl[, `:=`(
-      Index = NA, Outcode = "103", Units = "LER",
-      T.Descrip = .BY$sys,
-      C.Descrip = paste(unique(C.Descrip), collapse = " | "),
-      TID = paste(unique(TID), collapse = "-"), CID = paste(unique(CID), collapse = "-"),
-      EU = paste(unique(EU), collapse = "."), EUlist = paste(unique(EU), collapse = "-"),
-      Variety = paste(unique(na.omit(Variety)), collapse = "; "),
-      Product = paste(crops, collapse = "-"), Product.Simple = paste(crops, collapse = "-"),
-      Product.Subtype = product_subtype(crops),
-      Out.SubInd = "Land Equivalent Ratio", DataLoc = "calculated",
-      MeanT.Error = NA, MeanC.Error = NA, Mean.Error.Type = NA
-    )]
-    tmpl
-  }, by = .(Code, Site.ID, M.Year, sys)]
-  out <- merge(out, ler_tab, by = c("Code", "Site.ID", "M.Year", "sys"))
-  out[, `:=`(MeanC = 1, MeanT = LER, yi = log(LER), pc = 100 * (LER - 1), LER.Source = source)]
-  out[, c("LER", "sys") := NULL]
-  out
-}
+ler_exclude <- c("JO0076",   # Watanabe 2019: natural fallow + pearl millet, not an intercrop
+                 "NN0311")   # van Asten 2011: coffee-banana perennial system
+iso_by_paper <- rbind(unique(ERA_dt[, .(Code, iso = ISO.3166.1.alpha.3)]),
+                      unique(as.data.table(agronomic_metadata$Data.Out)[!B.Code %in% ERA_dt$Code, .(Code = B.Code, iso = ISO.3166.1.alpha.3)]))
+africa_papers <- iso_by_paper[!is.na(iso), .(africa = all(iso %in% world$adm0_a3)), by = Code][africa == TRUE, Code]
 
-# 1. LER from sole + intercrop yields
-already_reported <- unique(ERA_dt[grepl("103", Outcode), Code])
+# Reported LER in the raw extraction that the compiled table dropped (LER recorded as an outcome,
+# or under the yield outcome with "LER" in Species/Item/Group). Only systems with ONE value are
+# taken as a reported LER; systems with several values (often unlabelled partial LERs, one per
+# crop) are ambiguous and left for QC. Papers already covered by compiled Outcode 103 or by the
+# reported-pLER route (Falconnier) are not duplicated.
+raw_ler <- reported_ler_from_raw(agronomic_metadata$Data.Out, agronomic_metadata$Out.Out)
+compiled_103 <- unique(ERA_dt[grepl("103", Outcode), Code])
+raw_rep <- raw_ler$reported[Code %in% africa_papers & !Code %in% compiled_103 & !Code %in% ler_exclude & Code != "DK0064"]
+raw_rep[, paper_has_multi := any(n_values_system > 1), by = Code]
+raw_ler_ambiguous <- raw_rep[n_values_system > 1]
+raw_rep <- raw_rep[n_values_system == 1]
 
-# All ERA papers with intercrop yield comparisons (not only the Adam et al. list)
-all_ler <- calc_ler(unique(IC_yield$Code))
+# papers that report LER (compiled or raw) are not recalculated from yields
+already_reported <- unique(c(compiled_103, raw_rep$Code))
 
-ler_exclude <- c(
-  "JO0076",                                     # Watanabe 2019: natural fallow + pearl millet, not an intercrop
-  "NN0311",                                     # van Asten 2011: coffee-banana perennial system
-  "NM0069", "AC0135", "CJ0017", "JO0062"        # outside Africa (Mexico, Mexico, Colombia, Brazil)
-)
-ler_keep <- all_ler[status == "OK" & !Code %in% already_reported & !Code %in% ler_exclude,
-                    .(Code, Site.ID, M.Year, sys, LER, pLER)]
+in_scope <- function(dt) dt[Code %in% africa_papers & !Code %in% already_reported & !Code %in% ler_exclude]
+ler_keep <- in_scope(ler_systems)[status == "OK"]
+ler_comp <- in_scope(ler_run$components)[ler_keep[, .(Code, Site.ID, M.Year, sys)], on = .(Code, Site.ID, M.Year, sys)]
 
-# Check: countries of the papers being added (should all be African)
-unique(ERA_dt[Code %in% ler_keep$Code, .(Country)])[order(Country)]
-
-comp <- ic_rows(unique(ler_keep$Code))
-comp <- comp[ler_keep[, .(Code, Site.ID, M.Year, sys)], on = .(Code, Site.ID, M.Year, sys)]
-
-ler_new_yield <- make_ler_rows(comp, ler_keep, "calculated_yield")
+# 1. LER from sole + intercrop yields: one row per system, metadata from the intercrop component's ERA row
+ler_new_yield <- ler_comp[, {
+  tmpl <- ERA_dt[Index == as.numeric(sub(",.*$", "", ic_rows[1]))][1]
+  crops <- sort(unique(Crop))
+  tmpl[, `:=`(
+    Index = NA, Outcode = "103", Units = "LER",
+    T.Descrip = .BY$sys_, TID = paste(ic_id, collapse = "-"),
+    C.Descrip = paste(mono_label, collapse = " | "), CID = paste(mono_id, collapse = "-"),
+    Product = paste(crops, collapse = "-"), Product.Simple = paste(crops, collapse = "-"),
+    Product.Subtype = product_subtype(crops),
+    Out.SubInd = "Land Equivalent Ratio", DataLoc = "calculated",
+    MeanT.Error = NA, MeanC.Error = NA, Mean.Error.Type = NA,
+    MeanC = 1, MeanT = sum(pLER)
+  )]
+  tmpl[, `:=`(yi = log(MeanT), pc = 100 * (MeanT - 1))]
+  tmpl[, `:=`(LER.Source = "calculated_automatic",
+              pLER = paste0(Crop, "=", sprintf("%.3f", pLER), collapse = "; "))]
+  tmpl
+}, by = .(Code_ = Code, Site_ = Site.ID, Year_ = M.Year, sys_ = sys)]
+ler_new_yield[, c("Code_", "Site_", "Year_", "sys_") := NULL]
+ler_new_yield <- merge(ler_new_yield, ler_keep[, .(Code, Site.ID, M.Year, T.Descrip = sys, LER.QC = qc_flag)],
+                       by = c("Code", "Site.ID", "M.Year", "T.Descrip"), all.x = TRUE)
 
 # 2. Falconnier 2016 (DK0064): sum grain pLERs captured as Outcode 101
 falc <- ERA_dt[Code == "DK0064" & Outcode == "101"]
 falc <- falc[grepl("-", Product.Simple) & is.na(MeanC) & !grepl("fodder", T.Descrip, ignore.case = TRUE)]
-falc[, sys := T.Descrip]
-falc_ler <- falc[, .(LER = sum(MeanT), pLER = paste(MeanT, collapse = " + ")),
-                 by = .(Code, Site.ID, M.Year, sys)]
-ler_new_pler <- make_ler_rows(falc, falc_ler, "calculated_pLER")
+ler_new_pler <- falc[, {
+  tmpl <- copy(.SD[1])
+  crops <- sort(unique(unlist(strsplit(Product.Simple, "-"))))
+  tmpl[, `:=`(Index = NA, Outcode = "103", Units = "LER", T.Descrip = .BY$T.Descrip_,
+              Product = paste(crops, collapse = "-"), Product.Simple = paste(crops, collapse = "-"),
+              Product.Subtype = product_subtype(crops),
+              Out.SubInd = "Land Equivalent Ratio", DataLoc = "calculated",
+              MeanT.Error = NA, MeanC.Error = NA, Mean.Error.Type = NA,
+              MeanC = 1, MeanT = sum(.SD$MeanT))]
+  tmpl[, `:=`(yi = log(MeanT), pc = 100 * (MeanT - 1), LER.Source = "reported_pLER_sum",
+              pLER = paste(.SD$MeanT, collapse = " + "), LER.QC = NA_character_)]
+  tmpl
+}, by = .(T.Descrip_ = T.Descrip)][, T.Descrip_ := NULL]
 
-# 3. Append to the LER data
+# 3. Calculated with manual publication QC: ERA holds the yields but has lost or misassigned
+# information needed to pair them; the original publication resolves it. Every component value
+# and its source is listed in qc_inputs/manual_qc_components.csv (confirmed rows only).
+mqc <- fread("qc_inputs/manual_qc_components.csv", colClasses = list(character = c("M.Year", "Site.ID")))[status == "confirmed"]
+mqc <- mqc[!paper %in% already_reported]   # a paper that reports LER is not recalculated
+mqc_sys <- mqc[, {
+  m <- merge(.SD[role == "intercrop", .(crop, ic_y = value)], .SD[role == "sole", .(crop, mono_y = value)], by = "crop")
+  ok <- nrow(m) >= 2 && nrow(m) == uniqueN(.SD$crop) && all(m$mono_y > 0) && all(m$ic_y >= 0)
+  .(LER = if (ok) sum(m$ic_y / m$mono_y) else NA_real_,
+    pLER = paste0(m$crop, "=", sprintf("%.3f", m$ic_y / m$mono_y), collapse = "; "),
+    crops = paste(sort(m$crop), collapse = "-"),
+    publication_values = paste(unique(paste(crop, role)[value_source == "publication"]), collapse = "; "),
+    sources = paste(paste0(crop, " ", role, ": ", source_ref), collapse = " | "))
+}, by = .(Code_ = paper, Site_ = Site.ID, Year_ = M.Year, sys_ = system)]
+if (nrow(mqc_sys) == 0) mqc_sys <- data.table(Code_ = character(), Site_ = character(), Year_ = character(), sys_ = character(),
+                                              LER = numeric(), pLER = character(), crops = character(),
+                                              publication_values = character(), sources = character())
+stopifnot(mqc_sys[, all(!is.na(LER))])
+
+# a manual-QC system supersedes any automatic row for the same system
+ler_new_yield <- ler_new_yield[!paste(Code, Site.ID, M.Year, T.Descrip) %in% mqc_sys[, paste(Code_, Site_, Year_, sys_)]]
+ler_new_manual <- if (nrow(mqc_sys) == 0) data.table() else mqc_sys[, {
+  tmpl <- copy(ERA_dt[Code == Code_ & Site.ID == Site_ & Outcode == "101"][1])
+  cr <- strsplit(crops, "-")[[1]]
+  tmpl[, `:=`(Index = NA, Outcode = "103", Units = "LER", M.Year = Year_, T.Descrip = sys_,
+              TID = NA, CID = NA, C.Descrip = NA, Variety = NA,
+              Product = crops, Product.Simple = crops, Product.Subtype = product_subtype(cr),
+              Out.SubInd = "Land Equivalent Ratio", DataLoc = "calculated",
+              MeanT.Error = NA, MeanC.Error = NA, Mean.Error.Type = NA,
+              MeanC = 1, MeanT = LER)]
+  tmpl[, `:=`(yi = log(MeanT), pc = 100 * (MeanT - 1), LER.Source = "calculated_manual_qc", pLER = pLER,
+              LER.QC = paste0("manual_publication_qc: ", publication_values))]
+  tmpl
+}, by = .(Code_, Site_, Year_, sys_)]
+if (nrow(ler_new_manual)) ler_new_manual[, c("Code_", "Site_", "Year_", "sys_") := NULL]
+
+# 4. Reported LER from the raw extraction (category C): one row per single-valued system,
+# metadata from a compiled row of the same paper and site where one exists
+ler_new_raw <- rbindlist(lapply(seq_len(nrow(raw_rep)), function(i) {
+  r <- raw_rep[i]
+  tmpl <- ERA_dt[Code == r$Code & Site.ID == r$Site.ID][1]
+  if (is.na(tmpl$Code)) tmpl <- ERA_dt[Code == r$Code][1]
+  tmpl <- if (is.na(tmpl$Code)) data.table(Code = r$Code) else copy(tmpl)
+  prod <- gsub('..', '-', r$Product, fixed = TRUE)
+  qc <- c(if (!is.na(r$LER.Group) && nzchar(r$LER.Group)) paste0('LER basis: ', r$LER.Group),
+          if (r$paper_has_multi) 'paper also has multi-valued LER systems (check this is a total, not a partial LER)')
+  tmpl[, `:=`(Index = NA, Outcode = '103', Out.SubInd = 'Land Equivalent Ratio', Units = 'LER',
+              Site.ID = r$Site.ID, M.Year = r$M.Year,
+              T.Descrip = if (!is.na(r$IN.Level.Name)) r$IN.Level.Name else r$T.Name,
+              TID = NA, CID = NA, C.Descrip = NA, Product = prod, Product.Simple = prod, DataLoc = r$DataLoc,
+              MeanT.Error = NA, MeanC.Error = NA, Mean.Error.Type = NA,
+              MeanC = 1, MeanT = r$LER, yi = log(r$LER), pc = 100 * (r$LER - 1),
+              LER.Source = 'reported_raw', pLER = NA_character_,
+              LER.QC = if (length(qc)) paste(qc, collapse = '; ') else NA_character_)]
+  tmpl
+}), fill = TRUE)
+
+# 5. Append to the LER data
 LER_all <- rbindlist(list(
-  as.data.table(ERA_dt[grepl("103", Outcode)])[, `:=`(LER.Source = "reported", pLER = NA_character_)],
+  ERA_dt[grepl("103", Outcode)][, `:=`(LER.Source = "reported", pLER = NA_character_, LER.QC = NA_character_)],
+  ler_new_raw,
   ler_new_yield,
+  ler_new_manual,
   ler_new_pler
 ), use.names = TRUE, fill = TRUE)
 
 LER_all[, .(rows = .N, papers = uniqueN(Code)), by = LER.Source]
 
-knitr::kable(rbind(ler_new_yield, ler_new_pler)[, .(Code, Author, Date, M.Year, T.Descrip, Product, pLER, LER = round(MeanT, 2), LER.Source)])
+knitr::kable(rbind(ler_new_yield, ler_new_manual, ler_new_pler, fill = TRUE)[, .(Code, Author, Date, Country, M.Year, T.Descrip, Product, pLER, LER = round(MeanT, 3), LER.Source, LER.QC)])
+```
+
+### Reported LER recovered from the raw extraction
+
+Some extractors did not record LER under the LER outcome that becomes Outcode 103. They entered it either as a "Land Equivalent Ratio" outcome without a control comparison, or under Crop Yield with `LER` in Species/Item/Group (e.g. Kermah et al. 2017, Table 7). The compiled table drops both, but the raw extraction (`Data.Out`, `Out.Out`) keeps them. These papers now count as **reporting** LER (`LER.Source = reported_raw`), so they are not recalculated from yields.
+
+- Only systems with one LER value are used.
+- Systems with several values are often unlabelled partial LERs, one per crop. They are left out and listed in `outputs/qc/LER_raw_ambiguous.csv`.
+
+For papers where a yield-based calculation was also possible, the two are compared below as a check.
+
+```{r reported raw ler, echo=T, message=F}
+knitr::kable(data.table(
+  measure = c("papers with reported LER only in the raw extraction", "reported LER rows added",
+              "papers with only ambiguous (multi-valued) raw LER", "papers with compiled LER (Outcode 103)"),
+  n = c(uniqueN(raw_rep$Code), nrow(raw_rep),
+        length(setdiff(unique(raw_ler_ambiguous$Code), raw_rep$Code)), length(intersect(compiled_103, africa_papers)))))
+
+# calculated (from yields) vs reported, matched on paper x site x year x system
+norm_sys <- function(s) norm_txt(gsub("..", "***", s, fixed = TRUE))
+calc_vs_rep <- merge(
+  ler_systems[status == "OK" & Code %in% raw_rep$Code, .(Code, Site.ID, M.Year, k = norm_sys(sys), sys, LER_calculated = LER)],
+  raw_rep[, .(Code, Site.ID, M.Year, k = norm_sys(fifelse(!is.na(IN.Level.Name), IN.Level.Name, T.Name)), LER_reported = LER, DataLoc)],
+  by = c("Code", "Site.ID", "M.Year", "k"))
+calc_vs_rep[, diff := LER_calculated - LER_reported]
+knitr::kable(calc_vs_rep[, .(systems = .N, mean_abs_diff = round(mean(abs(diff)), 3), max_abs_diff = round(max(abs(diff)), 3),
+                             within_0.05 = sum(abs(diff) <= 0.05)), by = Code][order(-max_abs_diff)])
+```
+
+### Validation of the calculated rows
+
+Every calculated-yield LER is checked against its audit trail: each component has an intercrop yield and exactly one monocrop reference, pLER is reproduced from those yields, `MeanT` equals the sum of the unrounded pLERs, the component crops match the system, and no component was matched across paper, site or year.
+
+```{r ler validation, echo=T, message=F}
+chk <- merge(ler_comp, ler_new_yield[, .(Code, Site.ID, M.Year, sys = T.Descrip, MeanT, Product)],
+             by = c("Code", "Site.ID", "M.Year", "sys"))
+mono_tr <- merge(chk[, .(Code, Site.ID, M.Year, Crop, id = mono_id)], ler_run$treatments,
+                 by = c("Code", "Site.ID", "M.Year", "Crop", "id"))
+checks <- c(
+  every_component_has_intercrop_yield = chk[, all(!is.na(ic_y) & !is.na(ic_id))],
+  every_component_has_one_monocrop    = chk[, all(!is.na(mono_id) & !is.na(mono_y) & is.na(reason))],
+  one_component_per_crop              = chk[, .N, by = .(Code, Site.ID, M.Year, sys, Crop)][, all(N == 1)],
+  pLER_reproduced_from_yields         = chk[, isTRUE(all.equal(pLER, ic_y / mono_y))],
+  MeanT_equals_sum_of_unrounded_pLER  = chk[, .(s = sum(pLER), m = MeanT[1]), by = .(Code, Site.ID, M.Year, sys)][, isTRUE(all.equal(s, m))],
+  products_match_components           = chk[, .(p = paste(sort(unique(Crop)), collapse = "-"), q = Product[1]), by = .(Code, Site.ID, M.Year, sys)][, all(p == q)],
+  monocrops_found_in_same_site_year   = nrow(mono_tr) == nrow(chk),
+  monocrop_is_not_an_intercrop        = all(!mono_tr$is_ic),
+  no_rows_without_audit               = nrow(ler_new_yield) == chk[, uniqueN(paste(Code, Site.ID, M.Year, sys))]
+)
+knitr::kable(data.table(check = names(checks), passed = checks))
+stopifnot(all(checks))
+```
+
+### QC: previous vs corrected calculation
+
+The previous calculation (`outputs/qc/LER_calculated_v1_baseline.csv`, before the matching was corrected) is compared with the corrected one, matched on paper × site × year × system ID.
+
+```{r ler qc compare, echo=T, message=F}
+old <- fread("outputs/qc/LER_calculated_v1_baseline.csv",
+             colClasses = list(character = c("M.Year", "Site.ID", "T.Descrip")))[LER.Source == "calculated_yield",
+             .(Code, Site.ID, M.Year, sys = T.Descrip, LER_old = MeanT, pLER_old = pLER)]
+new <- rbind(ler_new_yield, ler_new_manual, fill = TRUE)[, .(Code, Site.ID, M.Year, sys = T.Descrip, LER_new = MeanT, pLER_new = pLER, LER.Source, LER.QC)]
+qc <- merge(old, new, by = c("Code", "Site.ID", "M.Year", "sys"), all = TRUE)
+qc <- merge(qc, ler_systems[, .(Code, Site.ID, M.Year, sys, new_status = status)],
+            by = c("Code", "Site.ID", "M.Year", "sys"), all.x = TRUE)
+qc[, change := fcase(
+  !is.na(LER_old) & !is.na(LER_new) & abs(LER_old - LER_new) <= 0.005, "unchanged",
+  !is.na(LER_old) & !is.na(LER_new),                                   "value_changed",
+  is.na(LER_old)  & !is.na(LER_new),                                   "recovered",
+  !is.na(LER_old) & is.na(LER_new),                                    "removed")]
+
+flagged <- in_scope(ler_systems)[status != "OK" & n_crops >= 2]
+knitr::kable(data.table(
+  measure = c("calculated LER rows before", "calculated LER rows after", "unchanged", "LER value changed",
+              "newly recovered", "removed (previous match invalid or now ambiguous)",
+              "candidate systems flagged ambiguous / unmatchable", "papers affected"),
+  n = c(qc[!is.na(LER_old), .N], qc[!is.na(LER_new), .N], qc[change == "unchanged", .N],
+        qc[change == "value_changed", .N], qc[change == "recovered", .N], qc[change == "removed", .N],
+        nrow(flagged), qc[change != "unchanged", uniqueN(Code)])
+))
+
+qc_by_paper <- qc[, .(rows_before = sum(!is.na(LER_old)), rows_after = sum(!is.na(LER_new)),
+                      unchanged = sum(change == "unchanged"), value_changed = sum(change == "value_changed"),
+                      recovered = sum(change == "recovered"), removed = sum(change == "removed"),
+                      removal_reasons = paste(unique(na.omit(new_status[change == "removed"])), collapse = "; ")),
+                  by = Code]
+qc_by_paper <- merge(unique(ERA_dt[, .(Code, Author, Date)]), qc_by_paper, by = "Code")[order(-(recovered + removed + value_changed))]
+knitr::kable(qc_by_paper)
+
+# Flagged candidate systems by reason (for manual QC)
+knitr::kable(flagged[, .(systems = .N, papers = uniqueN(Code)), by = .(reason = status)][order(-systems)])
 ```
 
 ## Updated LER evidence base
@@ -502,4 +633,93 @@ out_dir <- "outputs"
 dir.create(out_dir, showWarnings = FALSE)
 data.table::fwrite(LER_all, file.path(out_dir, "LER_all.csv"))                                    # reported + calculated
 data.table::fwrite(LER_all[LER.Source != "reported"], file.path(out_dir, "LER_calculated_new.csv")) # new rows only
+
+# QC / audit tables (in-scope papers: African, not already reporting LER)
+qc_dir <- file.path(out_dir, "qc")
+dir.create(qc_dir, showWarnings = FALSE)
+audit_comp <- in_scope(ler_run$components)[, .(
+  Code, Site.ID, M.Year, system_id = sys, crop = Crop,
+  intercrop_id = ic_id, intercrop_label = ic_label, intercrop_codes = ic_codes, intercrop_yield = ic_y,
+  intercrop_yields_all = ic_yields_all, intercrop_era_rows = ic_rows,
+  monocrop_id = mono_id, monocrop_label = mono_label, monocrop_codes = mono_codes, monocrop_yield = mono_y,
+  pLER, match_basis, factor_codes_differ = factor_diff, design_codes_differ = design_diff,
+  reason, candidates)]
+audit_sys <- in_scope(ler_systems)[, .(Code, Site.ID, M.Year, system_id = sys, crops, n_crops, n_expected,
+                                       status, pLER, LER, qc_flag, intercrop_ids = ic_ids, monocrop_ids = mono_ids, LER_reported)]
+data.table::fwrite(audit_comp, file.path(qc_dir, "LER_audit_components.csv"))
+data.table::fwrite(audit_sys, file.path(qc_dir, "LER_audit_systems.csv"))
+data.table::fwrite(qc, file.path(qc_dir, "LER_qc_old_vs_new.csv"))
+data.table::fwrite(qc_by_paper, file.path(qc_dir, "LER_qc_by_paper.csv"))
+data.table::fwrite(ler_run$zero_log[Code %in% unique(audit_comp$Code)], file.path(qc_dir, "LER_zero_placeholders_dropped.csv"))
+data.table::fwrite(reported_ler_raw, file.path(qc_dir, "reported_LER_raw_coded.csv"))
+data.table::fwrite(raw_ler_ambiguous, file.path(qc_dir, "LER_raw_ambiguous.csv"))
+data.table::fwrite(raw_ler$partial_log, file.path(qc_dir, "LER_raw_partial_excluded.csv"))
+data.table::fwrite(calc_vs_rep, file.path(qc_dir, "LER_calculated_vs_reported_raw.csv"))
+data.table::fwrite(mqc_sys[, .(Code = Code_, Site.ID = Site_, M.Year = Year_, system_id = sys_, crops, pLER, LER, publication_values, sources)],
+                   file.path(qc_dir, "LER_audit_manual_qc.csv"))
+```
+
+### Manual QC review files
+
+One review file per purpose, for checking the calculated LERs paper by paper:
+
+- **Paper checklist** (`outputs/qc/LER_paper_checklist.csv`): one row per paper, with the number of LERs by category and blank QC columns.
+- **System review** (`outputs/qc/LER_system_review.csv`): one row per candidate intercrop system. It shows every component's intercrop and monocrop treatment, label and yield, the pLERs, the category (A automatic / B manual QC / D unresolved), the status or reason, and QC flags, with blank decision columns.
+
+Both are also written to `outputs/qc/LER_QC_workbook.xlsx` (sheets `checklist` and `systems`).
+
+```{r qc review files, echo=T, message=F}
+papers_meta <- unique(ERA_dt[, .(Code, Author, Date, DOI, Country)])[, .SD[1], by = Code]
+
+# components collapsed to one line per system
+comp_txt <- in_scope(ler_run$components)[, .(
+  components = paste0(Crop, ": IC '", ic_label, "' = ", signif(ic_y, 4), " / sole '", mono_label, "' = ", signif(mono_y, 4),
+                      fifelse(is.na(reason), "", paste0(" [", reason, "]")), collapse = "  ||  ")
+), by = .(Code, Site.ID, M.Year, sys)]
+
+auto_sys <- in_scope(ler_systems)[n_crops >= 2]
+auto_sys <- merge(auto_sys, comp_txt, by = c("Code", "Site.ID", "M.Year", "sys"), all.x = TRUE)
+auto_sys[, category := fifelse(status == "OK", "A_calculated_automatic", "D_unresolved")]
+manual_sys <- mqc_sys[, .(Code = Code_, Site.ID = Site_, M.Year = Year_, sys = sys_, crops, pLER, LER,
+                          status = "OK", qc_flag = paste0("manual_publication_qc: ", publication_values),
+                          components = sources, category = "B_calculated_manual_qc")]
+# a manual-QC system supersedes the automatic attempt at the same system
+auto_sys <- auto_sys[!paste(Code, Site.ID, M.Year, sys) %in% manual_sys[, paste(Code, Site.ID, M.Year, sys)]]
+
+review <- rbind(auto_sys[, .(Code, Site.ID, M.Year, sys, crops, category, status, LER, pLER, qc_flag, components, LER_reported)],
+                manual_sys,
+                raw_rep[, .(Code, Site.ID, M.Year, sys = fifelse(!is.na(IN.Level.Name), IN.Level.Name, T.Name), crops = Product,
+                            category = 'C_reported_raw', status = 'reported', LER,
+                            qc_flag = fifelse(paper_has_multi, 'paper also has multi-valued LER systems', NA_character_),
+                            components = paste0('reported in ', DataLoc, fifelse(is.na(LER.Group), '', paste0(' (', LER.Group, ')'))))],
+                fill = TRUE)
+review <- merge(papers_meta, review, by = "Code", all.y = TRUE)
+review[, `:=`(qc_decision = "", qc_corrected_LER = "", qc_notes = "", qc_by = "", qc_date = "")]
+setorder(review, Code, Site.ID, M.Year, category, sys)
+
+checklist <- review[, .(
+  n_A_automatic   = sum(category == "A_calculated_automatic"),
+  n_B_manual_qc   = sum(category == "B_calculated_manual_qc"),
+  n_D_unresolved  = sum(category == "D_unresolved"),
+  n_C_reported_raw = sum(category == 'C_reported_raw'),
+  n_flagged       = sum(!is.na(qc_flag) & category != "D_unresolved"),
+  LER_min         = suppressWarnings(round(min(LER, na.rm = TRUE), 3)),
+  LER_max         = suppressWarnings(round(max(LER, na.rm = TRUE), 3)),
+  unresolved_reasons = paste(unique(status[category == "D_unresolved"]), collapse = "; ")
+), by = .(Code, Author, Date, DOI, Country)]
+checklist[!is.finite(LER_min), `:=`(LER_min = NA, LER_max = NA)]
+checklist <- checklist[n_A_automatic + n_B_manual_qc + n_C_reported_raw > 0 | Code %in% unique(c(ler_new_yield$Code, ler_new_manual$Code))]
+checklist[, `:=`(qc_status = "", qc_notes = "", qc_by = "", qc_date = "")]
+setorder(checklist, -n_A_automatic, Code)
+review <- review[Code %in% checklist$Code]
+
+data.table::fwrite(checklist, file.path(qc_dir, "LER_paper_checklist.csv"))
+data.table::fwrite(review, file.path(qc_dir, "LER_system_review.csv"))
+wb <- openxlsx::createWorkbook()
+openxlsx::addWorksheet(wb, "checklist"); openxlsx::writeDataTable(wb, "checklist", checklist)
+openxlsx::addWorksheet(wb, "systems");   openxlsx::writeDataTable(wb, "systems", review)
+openxlsx::freezePane(wb, "systems", firstRow = TRUE); openxlsx::freezePane(wb, "checklist", firstRow = TRUE)
+openxlsx::saveWorkbook(wb, file.path(qc_dir, "LER_QC_workbook.xlsx"), overwrite = TRUE)
+
+knitr::kable(checklist[, .(Code, Author, Date, n_A_automatic, n_B_manual_qc, n_C_reported_raw, n_D_unresolved, n_flagged, LER_min, LER_max)])
 ```

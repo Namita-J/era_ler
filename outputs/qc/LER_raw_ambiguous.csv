@@ -1,0 +1,218 @@
+Code,Site.ID,M.Year,Time,T.Name,IN.Level.Name,Product,LER,Out.Code.Joined,LER.Group,DataLoc,levels_key,n_values_system,paper_has_multi
+CJ0011,Boricha District site 1,2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 1,2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 2,2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,0.8,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 2,2018.2019,2018..2019,,Sequential common bean intercropping with maize (M+Bn+Bn1)***Sequential common bean intercropping with maize (M+Bn1+Bn)***Sequential common bean intercropping with maize (M1+Bn+Bn),Common Bean-Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 2,2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 1,2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 1,2018.2019,2018..2019,,Sequential common bean intercropping with maize (M+Bn+Bn1)***Sequential common bean intercropping with maize (M+Bn1+Bn)***Sequential common bean intercropping with maize (M1+Bn+Bn),Common Bean-Common Bean-Maize,1.1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 1,2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,1.1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 2,2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 2,2018.2019,2018..2019,,Sequential common bean intercropping with maize (M+Bn+Bn1)***Sequential common bean intercropping with maize (M+Bn1+Bn)***Sequential common bean intercropping with maize (M1+Bn+Bn),Common Bean-Common Bean-Maize,1.1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 2,2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,"Hawassa University, Hawassa",2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,0.9,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,"Hawassa University, Hawassa",2018.2019,2018..2019,,Sequential common bean intercropping with maize (M+Bn+Bn1)***Sequential common bean intercropping with maize (M+Bn1+Bn)***Sequential common bean intercropping with maize (M1+Bn+Bn),Common Bean-Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,"Hawassa University, Hawassa",2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,1,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 1,2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,0.5,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 1,2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,0.2,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 2,2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,0.7,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 2,2018.2019,2018..2019,,Sequential common bean intercropping with maize (M+Bn+Bn1)***Sequential common bean intercropping with maize (M+Bn1+Bn)***Sequential common bean intercropping with maize (M1+Bn+Bn),Common Bean-Common Bean-Maize,0.7,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Boricha District site 2,2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,0.5,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 1,2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,0.4,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 1,2018.2019,2018..2019,,Sequential common bean intercropping with maize (M+Bn+Bn1)***Sequential common bean intercropping with maize (M+Bn1+Bn)***Sequential common bean intercropping with maize (M1+Bn+Bn),Common Bean-Common Bean-Maize,0.3,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 1,2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,0.5,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 2,2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,0.6,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 2,2018.2019,2018..2019,,Sequential common bean intercropping with maize (M+Bn+Bn1)***Sequential common bean intercropping with maize (M+Bn1+Bn)***Sequential common bean intercropping with maize (M1+Bn+Bn),Common Bean-Common Bean-Maize,0.5,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,Loka Abaya District site 2,2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,0.6,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,"Hawassa University, Hawassa",2018.2019,2018..2019,,Simultaneous common bean intercropping with maize (M+Bn1)***Simultaneous common bean intercropping with maize (M1+Bn)-maize,Common Bean-Maize,0.5,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,"Hawassa University, Hawassa",2018.2019,2018..2019,,Sequential common bean intercropping with maize (M+Bn+Bn1)***Sequential common bean intercropping with maize (M+Bn1+Bn)***Sequential common bean intercropping with maize (M1+Bn+Bn),Common Bean-Common Bean-Maize,0.7,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+CJ0011,"Hawassa University, Hawassa",2018.2019,2018..2019,,Relay common bean intercropping with maize (M+BnR1)***Relay common bean intercropping with maize (M1+BnR),Common Bean-Maize,0.3,Land Equivalent Ratio..NA..Mean,,Table 5,|||||||||||||,2,TRUE
+DK0073,"Bundunia, NGS-LF",2013.2014,2013..2014,MZ-CP 2:2 rows-cowpea-NGS,MZ- 2:2 rows-maize-NGS***MZ-CP 2:2 rows-cowpea-NGS,Cowpea,1.68,Crop Yield..t/ha..LER,LER,Table 7,|NGS|Padi-Tuya SARC 3-122-2||Not in template||No Fertilizer Based On MT.Out|||||||,2,TRUE
+DK0073,"Bundunia, NGS-LF",2013.2014,2013..2014,MZ-CP 2:2 rows-cowpea-NGS,MZ- 2:2 rows-maize-NGS***MZ-CP 2:2 rows-cowpea-NGS,Cowpea,1.47,Crop Yield..t/ha..LER,LER,Table 7,|NGS|Padi-Tuya SARC 3-122-2||Not in template||No Fertilizer Based On MT.Out|||||||,2,TRUE
+JO0001,"CSIR, Nyankpala",2015,2015,,Obatanpa Int***Soybean-20 Int,Maize-Soybean,1.2,Land Equivalent Ratio,,TABLE 1,|||||||||||||,2,TRUE
+JO0001,"CSIR, Nyankpala",2015,2015,,Obatanpa Int***Soybean-30 Int,Maize-Soybean,1.2,Land Equivalent Ratio,,TABLE 1,|||||||||||||,2,TRUE
+JO0001,"CSIR, Nyankpala",2015,2015,,Obatanpa Int***Soybean-20 Int,Maize-Soybean,1.1,Land Equivalent Ratio,,TABLE 1,|||||||||||||,2,TRUE
+JO0001,"CSIR, Nyankpala",2015,2015,,Obatanpa Int***Soybean-30 Int,Maize-Soybean,1.4,Land Equivalent Ratio,,TABLE 1,|||||||||||||,2,TRUE
+JO0001,"CSIR, Nyankpala",2016,2016,,Obatanpa Int***Soybean-20 Int,Maize-Soybean,1.4,Land Equivalent Ratio,,TABLE 1,|||||||||||||,2,TRUE
+JO0001,"CSIR, Nyankpala",2016,2016,,Obatanpa Int***Soybean-30 Int,Maize-Soybean,1,Land Equivalent Ratio,,TABLE 1,|||||||||||||,2,TRUE
+JO0001,"CSIR, Nyankpala",2016,2016,,Obatanpa Int***Soybean-20 Int,Maize-Soybean,1.5,Land Equivalent Ratio,,TABLE 1,|||||||||||||,2,TRUE
+JO0001,"CSIR, Nyankpala",2016,2016,,Obatanpa Int***Soybean-30 Int,Maize-Soybean,1.2,Land Equivalent Ratio,,TABLE 1,|||||||||||||,2,TRUE
+JO0005,Chitedze ARS (LT CA Trial),2019,2019,,INT NUA 45***INT SC672,Maize-Common Bean,1.43,Land Equivalent Ratio,,Table 6,|||||||||||||,2,TRUE
+JO0005,Chitedze ARS (LT CA Trial),2019,2019,,INT SC672***INT SER83,Maize-Common Bean,1.69,Land Equivalent Ratio,,Table 6,|||||||||||||,2,TRUE
+JO0005,Chitedze ARS (LT CA Trial),2019,2019,,INT NUA 45***INT SC672,Maize-Common Bean,1.51,Land Equivalent Ratio,,Table 6,|||||||||||||,2,TRUE
+JO0005,Chitedze ARS (LT CA Trial),2019,2019,,INT SC672***INT SER83,Maize-Common Bean,1.76,Land Equivalent Ratio,,Table 6,|||||||||||||,2,TRUE
+JO0005,Linthipe,2020,2020,,INT NUA 45***INT SC672,Maize-Common Bean,1.84,Land Equivalent Ratio,,Table 6,|||||||||||||,2,TRUE
+JO0005,Linthipe,2020,2020,,INT SC672***INT SER83,Maize-Common Bean,1.74,Land Equivalent Ratio,,Table 6,|||||||||||||,2,TRUE
+JO0005,Linthipe,2020,2020,,INT NUA 45***INT SC672,Maize-Common Bean,1.58,Land Equivalent Ratio,,Table 6,|||||||||||||,2,TRUE
+JO0005,Linthipe,2020,2020,,INT SC672***INT SER83,Maize-Common Bean,1.88,Land Equivalent Ratio,,Table 6,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-12.5%***Fava-INT-12.5%,Barley-Fava Bean,0.93,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-25%***Fava-INT-25%,Barley-Fava Bean,0.85,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-37.5%***Fava-INT-37.5%,Barley-Fava Bean,0.85,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-50%***Fava-INT-50%,Barley-Fava Bean,0.76,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-62.5%***Fava-INT-62.5%,Barley-Fava Bean,0.73,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-12.5%***Fava-INT-12.5%,Barley-Fava Bean,0.12,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-25%***Fava-INT-25%,Barley-Fava Bean,0.23,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-37.5%***Fava-INT-37.5%,Barley-Fava Bean,0.38,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-50%***Fava-INT-50%,Barley-Fava Bean,0.41,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0011,Holetta Agricultural Research Center,2001.2002.2003,2001..2002..2003,,Barley-INT-100-62.5%***Fava-INT-62.5%,Barley-Fava Bean,0.48,Land Equivalent Ratio,,Table 3,|||||||||||||,2,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,0,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.72,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.03,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.15,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,3.75,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.43,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,0.91,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,2.03,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.7,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.12,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,2.78,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2018,2018,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,2.1,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,12,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,0.13,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,2.27,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.67,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,0.1,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,2.38,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.27,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.65,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.82,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,2.65,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.84,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0014,"KZNU Research & Training Farm, Ukulinga",2019,2019,,Interow intercrop CB +NWC***Interrow intercrop sorghum +NWC,Common Bean-Sorghum,1.6,Land Equivalent Ratio..N/A,,TABLE 3,|||||||||||||,11,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-0-HARVESTING***INT-MZ,Maize-Cowpea,0.58,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHI-2***INT-MZ,Maize-Cowpea,0.59,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHI-3***INT-MZ,Maize-Cowpea,0.5,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHI-4***INT-MZ,Maize-Cowpea,0.76,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-0-HARVESTING***INT-MZ,Maize-Cowpea,1.43,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHI-2***INT-MZ,Maize-Cowpea,0.91,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHI-3***INT-MZ,Maize-Cowpea,1.14,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHI-4***INT-MZ,Maize-Cowpea,1.37,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-0-HARVESTING***INT-MZ,Maize-Cowpea,1.64,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHI-2***INT-MZ,Maize-Cowpea,1.05,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHI-3***INT-MZ,Maize-Cowpea,1.17,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHI-4***INT-MZ,Maize-Cowpea,1.48,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-0-HARVESTING***INT-MZ,Maize-Cowpea,1.59,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHI-2***INT-MZ,Maize-Cowpea,1.23,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHI-3***INT-MZ,Maize-Cowpea,1.33,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHI-4***INT-MZ,Maize-Cowpea,1.71,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-NONE***INT-MZ,Maize-Cowpea,0.58,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHF-7***INT-MZ,Maize-Cowpea,0.59,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHF-14***INT-MZ,Maize-Cowpea,0.5,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-NONE***INT-MZ,Maize-Cowpea,0.76,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHF-7***INT-MZ,Maize-Cowpea,1.47,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHF-14***INT-MZ,Maize-Cowpea,1,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-NONE***INT-MZ,Maize-Cowpea,1.17,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHF-7***INT-MZ,Maize-Cowpea,1.5,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHF-14***INT-MZ,Maize-Cowpea,1.62,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-NONE***INT-MZ,Maize-Cowpea,1.14,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHF-7***INT-MZ,Maize-Cowpea,1.27,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHF-14***INT-MZ,Maize-Cowpea,1.55,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-0-HARVESTING***INT-MZ,Maize-Cowpea,0.3,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHI-2***INT-MZ,Maize-Cowpea,0.65,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHI-3***INT-MZ,Maize-Cowpea,0.58,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHI-4***INT-MZ,Maize-Cowpea,0.09,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-0-HARVESTING***INT-MZ,Maize-Cowpea,0.32,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHI-2***INT-MZ,Maize-Cowpea,0.82,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHI-3***INT-MZ,Maize-Cowpea,0.7,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHI-4***INT-MZ,Maize-Cowpea,0.43,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-0-HARVESTING***INT-MZ,Maize-Cowpea,0.45,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHI-2***INT-MZ,Maize-Cowpea,0.93,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHI-3***INT-MZ,Maize-Cowpea,0.75,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHI-4***INT-MZ,Maize-Cowpea,0.3,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-0-HARVESTING***INT-MZ,Maize-Cowpea,0.35,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHI-2***INT-MZ,Maize-Cowpea,0.94,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHI-3***INT-MZ,Maize-Cowpea,0.74,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHI-4***INT-MZ,Maize-Cowpea,0.28,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-NONE***INT-MZ,Maize-Cowpea,0.3,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHF-7***INT-MZ,Maize-Cowpea,0.65,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2006-SS,2006-SS,,INT-CP-LHF-14***INT-MZ,Maize-Cowpea,0.58,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-NONE***INT-MZ,Maize-Cowpea,0.09,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHF-7***INT-MZ,Maize-Cowpea,0.43,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-LS,2007-LS,,INT-CP-LHF-14***INT-MZ,Maize-Cowpea,0.92,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-NONE***INT-MZ,Maize-Cowpea,0.75,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHF-7***INT-MZ,Maize-Cowpea,0.35,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2007-SS,2007-SS,,INT-CP-LHF-14***INT-MZ,Maize-Cowpea,0.31,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-NONE***INT-MZ,Maize-Cowpea,0.81,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHF-7***INT-MZ,Maize-Cowpea,0.71,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0082,"KARI, Katumani (ICRAF Machakos)",2008-LS,2008-LS,,INT-CP-LHF-14***INT-MZ,Maize-Cowpea,0.33,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,LUANAR Bunda College,2014,2014,,INT-CP***INT-PP,Cowpea-Pigeon Pea,0.68,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,LUANAR Bunda College,2014,2014,,INT-MZ***INT-PP,Maize-Pigeon Pea,0.65,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,LUANAR Bunda College,2014,2014,,INT-CP***INT-PP,Cowpea-Pigeon Pea,0.5,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,LUANAR Bunda College,2014,2014,,INT-CP***INT-MZ,Maize-Cowpea,0.48,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,LUANAR Bunda College,2014,2014,,INT-MZ***INT-PP,Maize-Pigeon Pea,0.92,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,LUANAR Bunda College,2014,2014,,INT-CP***INT-MZ,Maize-Cowpea,0.74,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,Nachisaka Extension Planning-(EPA),2014,2014,,INT-CP***INT-PP,Cowpea-Pigeon Pea,1.06,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,Nachisaka Extension Planning-(EPA),2014,2014,,INT-MZ***INT-PP,Maize-Pigeon Pea,1.01,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,Nachisaka Extension Planning-(EPA),2014,2014,,INT-CP***INT-PP,Cowpea-Pigeon Pea,0.57,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,Nachisaka Extension Planning-(EPA),2014,2014,,INT-CP***INT-MZ,Maize-Cowpea,0.43,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,Nachisaka Extension Planning-(EPA),2014,2014,,INT-MZ***INT-PP,Maize-Pigeon Pea,0.85,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0169,Nachisaka Extension Planning-(EPA),2014,2014,,INT-CP***INT-MZ,Maize-Cowpea,0.83,Land Equivalent Ratio..LER,,Table 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+AMF***INT-FG+AMF,Fenugreek-Fava Bean,1.97701149425287,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Yeast***INT-FG+Yeast,Fenugreek-Fava Bean,1.6551724137931,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Round Up***INT-FG+Round Up,Fenugreek-Fava Bean,1.67816091954022,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ Rizolex***INT-FG+ Rizolex,Fenugreek-Fava Bean,1.93103448275862,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ No chem***INT-FG+ No chem,Fenugreek-Fava Bean,1.47126436781609,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+AMF***INT-LP+AMF,Lupin-Fava Bean,1.64367816091954,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Yeast***INT-LP+Yeast,Lupin-Fava Bean,1.40229885057471,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Round Up***INT-LP+Round Up,Lupin-Fava Bean,1.44827586206896,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ Rizolex***INT-LP+ Rizolex,Lupin-Fava Bean,1.51724137931034,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ No chem***INT-LP+ No chem,Lupin-Fava Bean,1.20689655172413,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+AMF***INT-GLC+AMF,Garlic-Fava Bean,1.8735632183908,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Yeast***INT-GLC+Yeast,Garlic-Fava Bean,1.62068965517241,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Round Up***INT-GLC+Round Up,Garlic-Fava Bean,1.62068965517241,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ Rizolex***INT-GLC+ Rizolex,Garlic-Fava Bean,1.73563218390804,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ No chem***INT-GLC+ No chem,Garlic-Fava Bean,1.45977011494252,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+AMF***INT-FG+AMF,Fenugreek-Fava Bean,0.28070175438597,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Yeast***INT-FG+Yeast,Fenugreek-Fava Bean,0.29239766081871,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Round Up***INT-FG+Round Up,Fenugreek-Fava Bean,0.29239766081871,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ Rizolex***INT-FG+ Rizolex,Fenugreek-Fava Bean,0.28070175438596,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ No chem***INT-FG+ No chem,Fenugreek-Fava Bean,0.28070175438596,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+AMF***INT-LP+AMF,Lupin-Fava Bean,0.44444444444445,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Yeast***INT-LP+Yeast,Lupin-Fava Bean,0.44444444444445,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Round Up***INT-LP+Round Up,Lupin-Fava Bean,0.44444444444444,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ Rizolex***INT-LP+ Rizolex,Lupin-Fava Bean,0.51461988304094,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ No chem***INT-LP+ No chem,Lupin-Fava Bean,0.42105263157895,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+AMF***INT-GLC+AMF,Garlic-Fava Bean,0.57309941520468,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Yeast***INT-GLC+Yeast,Garlic-Fava Bean,0.57309941520467,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+Round Up***INT-GLC+Round Up,Garlic-Fava Bean,0.58479532163742,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ Rizolex***INT-GLC+ Rizolex,Garlic-Fava Bean,0.54970760233918,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+JO0172,"Sers El-Layin Agriculture Research Station, Minufiya",2020.2021,2020..2021,,INT-FB+ No chem***INT-GLC+ No chem,Garlic-Fava Bean,0.57309941520468,Land Equivalent Ratio..Mean,,Figure 4,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int NF (TR)***P int NF (TR),Maize-Pigeon Pea,0.468,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int MF (TR)***M int MF (TR),Maize-Maize,0.766,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int RF (TR)***P int RF (TR),Maize-Pigeon Pea,0.646,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int NF (OR)***P int NF (OR),Maize-Pigeon Pea,0.784,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int MF (OR)***P int MF (OR),Maize-Pigeon Pea,0.885,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int RF (OR)***P int RF (OR),Maize-Pigeon Pea,0.709,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int NF  (F)***P int NF  (F),Maize-Pigeon Pea,0.827,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int MF  (F)***P int MF  (F),Maize-Pigeon Pea,0.57,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int RF  (F)***P int RF  (F),Maize-Pigeon Pea,0.609,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int NF (TR)***P int NF (TR),Maize-Pigeon Pea,1.04,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int MF (TR)***M int MF (TR),Maize-Maize,1.518,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int RF (TR)***P int RF (TR),Maize-Pigeon Pea,1.037,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int NF (OR)***P int NF (OR),Maize-Pigeon Pea,0.985,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int MF (OR)***P int MF (OR),Maize-Pigeon Pea,0.43,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int RF (OR)***P int RF (OR),Maize-Pigeon Pea,0.859,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int NF  (F)***P int NF  (F),Maize-Pigeon Pea,1.196,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int MF  (F)***P int MF  (F),Maize-Pigeon Pea,0.793,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int RF  (F)***P int RF  (F),Maize-Pigeon Pea,1.169,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int NF (TR)***P int NF (TR),Maize-Pigeon Pea,0.89,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int MF (TR)***M int MF (TR),Maize-Maize,0.79,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int RF (TR)***P int RF (TR),Maize-Pigeon Pea,0.823,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int NF (OR)***P int NF (OR),Maize-Pigeon Pea,1.017,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int MF (OR)***P int MF (OR),Maize-Pigeon Pea,0.854,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int RF (OR)***P int RF (OR),Maize-Pigeon Pea,1.521,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int NF  (F)***P int NF  (F),Maize-Pigeon Pea,0.823,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int MF  (F)***P int MF  (F),Maize-Pigeon Pea,1.011,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Ilakala,2015,2015,,M int RF  (F)***P int RF  (F),Maize-Pigeon Pea,1.641,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int NF (TR)***P int NF (TR),Maize-Pigeon Pea,1.013,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int MF (TR)***M int MF (TR),Maize-Maize,0.988,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int RF (TR)***P int RF (TR),Maize-Pigeon Pea,0.854,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int NF (OR)***P int NF (OR),Maize-Pigeon Pea,0.776,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int MF (OR)***P int MF (OR),Maize-Pigeon Pea,1.046,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int RF (OR)***P int RF (OR),Maize-Pigeon Pea,0.884,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int NF  (F)***P int NF  (F),Maize-Pigeon Pea,1.29,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int MF  (F)***P int MF  (F),Maize-Pigeon Pea,1.353,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NM0032,Changarawe,2016,2016,,M int RF  (F)***P int RF  (F),Maize-Pigeon Pea,1.077,Land Equivalent Ratio..NA,,Table 3,|||||||||||||,2,TRUE
+NN0430,"AVTC farm, Otobi",2004.1,2004.1,,intercrop TGX-low***maize medium,Maize-Soybean,1.2,Land Equivalent Ratio..NA,,tab 8,|||||||||||||,2,TRUE
+NN0430,"AVTC farm, Otobi",2004.1,2004.1,,intercrop TGX-low***maize medium,Maize-Soybean,1.3,Land Equivalent Ratio..NA,,tab 8,|||||||||||||,2,TRUE
+NN0490,"ARC, Giza",2021,2021,,GN 2:1***Maize 2:1,Maize-Groundnut,1.72717149220489,Land Equivalent Ratio,,Figure 6,|||||||||||||,2,TRUE
+NN0490,"ARC, Giza",2021,2021,,GN 2:1***Maize 2:1,Maize-Groundnut,1.83853006681514,Land Equivalent Ratio,,Figure 6,|||||||||||||,2,TRUE
