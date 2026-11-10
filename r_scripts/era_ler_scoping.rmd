@@ -313,59 +313,9 @@ LER_all <- rbindlist(list(
 knitr::kable(LER_all[, .(rows = .N, papers = uniqueN(Code)), by = LER.Source])
 ```
 
-## Papers from Adam et al. (2025)
-
-Of the 90 references in Adam et al., 32 are in ERA (matched on first author, year and journal/DOI). The rest are not in ERA.
-
-```{r adam papers, echo=T, message=F}
-adam_in_era <- data.table::fread(text = "ref,Code,Paper
-2,HK0093,Olasantan 1994
-4,NN0232,Workayehu 2011
-6,JO0011,Agegnehu 2006
-8,JS0223,Vesterager 2008
-9,NM0004,Nassary 2020
-10,DK0016,Alemayehu 2017
-16,AC0010,Chabi-Olaye 2005
-18,CJ0042,El-Mehy 2023
-19,NJ0148,Chimonyo 2016
-22,DK0064,Falconnier 2016
-25,DK0073,Kermah 2017
-26,JO0001,Berdjour 2020
-29,NN0420,Abdul Rahman 2021
-36,CJ0033,Kaluba 2022
-37,JO0128,Munda 2019
-42,NM0030,Songa 2007
-43,HK0308,Waddington 2007
-46,NM0028,Oseni & Aliyu 2010
-47,NN0445,Parwada 2021
-48,CJ0057,Latati 2014
-54,NN0058,Reddy 1992
-72,LM0333,Ogola 2013
-73,LM0141,Tsubo 2003
-75,HK0135,Zuofa 1992
-76,JO0187,Nwokoro 2021
-78,LM0045,Pypers 2011
-80,AG0078,Sanou 2016
-82,AN0062,Trail 2016
-84,DK0082,Maman 2017
-86,LM0224,Mucheru-Muna 2010
-89,NN0142,Rusinamhodzi 2012
-90,DK0148,Rusinamhodzi 2017")
-adam_in_era[, in_LER_data := Code %in% LER_all$Code]
-why_missing <- c(CJ0033 = "ERA has the cassava yield only", JO0128 = "ERA has the sweet potato yield only",
-                 JO0187 = "ERA has the cassava yield only", DK0082 = "ERA has the pearl millet yield only",
-                 LM0333 = "No yield data in ERA (water use only)",
-                 HK0308 = "Intercrop yields could not be paired with a single sole-crop yield",
-                 LM0045 = "Intercrop yields could not be paired with a single sole-crop yield",
-                 LM0224 = "Intercrop yields could not be paired with a single sole-crop yield")
-adam_in_era[, why_missing := why_missing[Code]]
-knitr::kable(adam_in_era[, .(papers = .N), by = in_LER_data])
-knitr::kable(adam_in_era[in_LER_data == FALSE, .(ref, Code, Paper, why_missing)], caption = "Adam et al. papers in ERA but not in our LER data")
-```
-
 ## Updated LER evidence base
 
-Papers with LER now = papers reporting LER + papers where LER was calculated.
+The LER data now cover `r uniqueN(LER_all$Code)` papers: `r uniqueN(LER_all[LER.Source == "reported", Code])` that report LER in ERA, `r uniqueN(LER_all[LER.Source == "reported_raw", Code])` that report LER found only in the raw ERA extraction, `r uniqueN(LER_all[LER.Source == "calculated_automatic", Code])` where LER was calculated from yields, and `r uniqueN(LER_all[LER.Source == "reported_pLER_sum", Code])` where reported partial LERs were summed.
 
 ```{r ler updated map, echo=T, message=F}
 LER_map <- copy(LER_all)
