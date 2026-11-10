@@ -1,10 +1,10 @@
-system_group,combinations,papers,site_years,locations,countries,observations
-Cereal + legume,24,73,177,82,20,964
-Cereal + cereal,2,1,8,2,1,16
-Root/tuber + legume,2,2,2,2,2,11
-Root/tuber + cereal,2,8,18,9,3,90
-Multi-crop (3+ crops),17,9,26,14,6,148
-Vegetable-based,17,12,22,11,6,92
-Tree-based (agroforestry / perennial),15,7,25,6,5,99
-Other,4,5,10,6,4,44
-Unidentified (single-crop label),5,4,15,5,3,32
+system_group,combinations,papers,countries,LER_values
+Cereal + legume,24,73,20,964
+Cereal + cereal,2,1,1,16
+Root/tuber + legume,2,2,2,11
+Root/tuber + cereal,2,8,3,90
+Multi-crop (3+ crops),17,9,6,148
+Vegetable-based,17,12,6,92
+Tree-based (agroforestry / perennial),15,7,5,99
+Other,4,5,4,44
+Unidentified (single-crop label),5,4,3,32
