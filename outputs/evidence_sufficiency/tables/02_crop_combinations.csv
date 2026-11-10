@@ -1,89 +1,89 @@
-combination,system_group,papers,LER_values
-cowpea + maize,Cereal + legume,21,225
-common bean + maize,Cereal + legume,14,108
-maize + soybean,Cereal + legume,9,122
-maize + pigeon pea,Cereal + legume,8,146
-groundnut + maize,Cereal + legume,7,53
-cassava + maize,Root/tuber + cereal,6,72
-cowpea + sorghum,Cereal + legume,5,33
-cowpea + pearl millet,Cereal + legume,4,117
-lablab + maize,Cereal + legume,4,17
-maize + mung bean,Cereal + legume,3,19
-maize + yam,Root/tuber + cereal,3,18
-amaranth + maize,Vegetable-based,2,14
-maize + okra,Vegetable-based,2,10
-cassava + maize + watermelon,Multi-crop (3+ crops),2,10
-cotton + cowpea,Other,2,8
-barley + fava bean,Cereal + legume,2,7
-cassava + cowpea + maize + soybean,Multi-crop (3+ crops),1,30
-common bean + sorghum,Cereal + legume,1,22
-sorghum + soybean,Cereal + legume,1,22
-leucaena leucocephala + maize,Tree-based (agroforestry / perennial),1,18
-maize + senna siamea,Tree-based (agroforestry / perennial),1,18
-crotalaria ochrolueca + maize,Cereal + legume,1,16
-african yam bean + cassava + maize + yam,Multi-crop (3+ crops),1,16
-acacia senegal + sesame + sorghum,Tree-based (agroforestry / perennial),1,16
-cotton + wheat,Other,1,16
-pearl millet + sesame,Other,1,16
-african yam bean + maize + yam,Multi-crop (3+ crops),1,12
-african yam bean + cassava + maize,Multi-crop (3+ crops),1,12
-banana + coffee (arabica),Tree-based (agroforestry / perennial),1,12
-sorghum,Unidentified (single-crop label),1,12
-grevillea robusta,Tree-based (agroforestry / perennial),1,9
-calabash + sorghum,Vegetable-based,1,8
-butter bean + cassava + maize + yam,Multi-crop (3+ crops),1,8
-cassava + cowpea,Root/tuber + legume,1,8
-cassava + okra,Vegetable-based,1,8
-natural fallow,Unidentified (single-crop label),1,8
-cowpea + finger millet,Cereal + legume,1,8
-fodder tree + unspecified fodder grass,Tree-based (agroforestry / perennial),1,8
-cowpea + okra,Vegetable-based,1,8
-cowpea + maize + okra,Multi-crop (3+ crops),1,8
-cowpea + millet (unspecified),Cereal + legume,1,8
-maize + sorghum,Cereal + cereal,1,8
-maize + pearl millet,Cereal + cereal,1,8
-common bean + maize + pearl millet,Multi-crop (3+ crops),1,8
-common bean + maize + pearl millet + sorghum,Multi-crop (3+ crops),1,8
-fava bean + maize,Cereal + legume,1,7
-maize + mucuna + sunhemp,Multi-crop (3+ crops),1,6
-butter bean + maize + yam,Multi-crop (3+ crops),1,6
-cassava + maize + yam,Multi-crop (3+ crops),1,6
-butter bean + cassava + maize,Multi-crop (3+ crops),1,6
-cassava + pepper,Vegetable-based,1,6
-common bean + tomato,Vegetable-based,1,6
-common vetch + finger millet,Cereal + legume,1,6
-lupin + teff,Cereal + legume,1,6
-maize,Unidentified (single-crop label),1,6
-okra + tomato,Vegetable-based,1,6
-maize + melon,Vegetable-based,1,5
-cassava + melon,Vegetable-based,1,5
-common bean + finger millet,Cereal + legume,1,5
-butter bean + maize,Cereal + legume,1,4
-groundnut + rice,Cereal + legume,1,4
-cassava + groundnut + maize,Multi-crop (3+ crops),1,4
-cassava + cowpea + maize,Multi-crop (3+ crops),1,4
-cassava + pumpkin,Vegetable-based,1,4
-finger millet + mung bean,Cereal + legume,1,4
-barley + fodder tree,Tree-based (agroforestry / perennial),1,4
-fodder tree + pearl millet,Tree-based (agroforestry / perennial),1,4
-rye + unspecified fodder grass,Other,1,4
-lablab,Unidentified (single-crop label),1,3
-finger millet + purple vetch,Cereal + legume,1,3
-potato + velvet bean,Root/tuber + legume,1,3
-cowpea,Unidentified (single-crop label),1,3
-cassava + chili,Vegetable-based,1,3
-common bean + okra,Vegetable-based,1,2
-common bean + maize + okra,Multi-crop (3+ crops),1,2
-acacia senegal + hibiscus,Tree-based (agroforestry / perennial),1,2
-acacia senegal + sorghum,Tree-based (agroforestry / perennial),1,2
-acacia senegal + sesame,Tree-based (agroforestry / perennial),1,2
-onion + tomato,Vegetable-based,1,2
-kale + tomato,Vegetable-based,1,2
-maize + tomato,Vegetable-based,1,2
-common bean + maize + mung bean,Multi-crop (3+ crops),1,2
-hairy vetch + maize,Cereal + legume,1,2
-maize + watermelon,Vegetable-based,1,1
-grevillea robusta + pepper,Tree-based (agroforestry / perennial),1,1
-cardamom + grevillea robusta + pepper,Tree-based (agroforestry / perennial),1,1
-gliricidia sp + pepper,Tree-based (agroforestry / perennial),1,1
-cardamom + gliricidia sp + pepper,Tree-based (agroforestry / perennial),1,1
+combination,system_group,papers,countries,LER_values,LER_median
+cowpea + maize,Cereal + legume,21,"Algeria, Cameroon, Gambia, Ghana, Kenya, Mali, Mozambique, Nigeria, South Africa, Tanzania, Zambia, Zimbabwe",225,1.5
+common bean + maize,Cereal + legume,14,"Egypt, Ethiopia, Kenya, Malawi, South Africa, Tanzania, Uganda",108,1.5
+maize + soybean,Cereal + legume,9,"Cameroon, Egypt, Ethiopia, Ghana, Mozambique, Nigeria",122,1.34
+maize + pigeon pea,Cereal + legume,8,"Kenya, Mozambique, South Africa, Tanzania",146,1.5
+groundnut + maize,Cereal + legume,7,"Egypt, Ghana, Kenya, Malawi, Mozambique",53,1.78
+cassava + maize,Root/tuber + cereal,6,"Benin, Cameroon, Nigeria",72,1.48
+cowpea + sorghum,Cereal + legume,5,"Burkina Faso, Mali, Nigeria, South Africa, Zimbabwe",33,1.6
+cowpea + pearl millet,Cereal + legume,4,"Burkina Faso, Niger",117,1.41
+lablab + maize,Cereal + legume,4,"Ethiopia, South Africa, Tanzania",17,1.76
+maize + mung bean,Cereal + legume,3,"Egypt, Ethiopia, Kenya",19,1.6
+maize + yam,Root/tuber + cereal,3,Nigeria,18,1.5
+amaranth + maize,Vegetable-based,2,Nigeria,14,1.14
+maize + okra,Vegetable-based,2,Cameroon,10,1.62
+cassava + maize + watermelon,Multi-crop (3+ crops),2,Nigeria,10,2.04
+cotton + cowpea,Other,2,"Tanzania, Zimbabwe",8,1.24
+barley + fava bean,Cereal + legume,2,Ethiopia,7,1.16
+cassava + cowpea + maize + soybean,Multi-crop (3+ crops),1,Ghana,30,2.09
+common bean + sorghum,Cereal + legume,1,Rwanda,22,1.83
+sorghum + soybean,Cereal + legume,1,Rwanda,22,1.81
+leucaena leucocephala + maize,Tree-based (agroforestry / perennial),1,Kenya,18,1.08
+maize + senna siamea,Tree-based (agroforestry / perennial),1,Kenya,18,1.33
+crotalaria ochrolueca + maize,Cereal + legume,1,Kenya,16,1.6
+african yam bean + cassava + maize + yam,Multi-crop (3+ crops),1,Nigeria,16,0.44
+acacia senegal + sesame + sorghum,Tree-based (agroforestry / perennial),1,Sudan,16,1.08
+cotton + wheat,Other,1,Egypt,16,2.09
+pearl millet + sesame,Other,1,Niger,16,1.17
+african yam bean + maize + yam,Multi-crop (3+ crops),1,Nigeria,12,0.74
+african yam bean + cassava + maize,Multi-crop (3+ crops),1,Nigeria,12,0.66
+banana + coffee (arabica),Tree-based (agroforestry / perennial),1,Ethiopia,12,1.5
+sorghum,Unidentified (single-crop label),1,Ethiopia,12,1.13
+grevillea robusta,Tree-based (agroforestry / perennial),1,Kenya,9,0.89
+calabash + sorghum,Vegetable-based,1,South Africa,8,1.45
+butter bean + cassava + maize + yam,Multi-crop (3+ crops),1,Nigeria,8,0.68
+cassava + cowpea,Root/tuber + legume,1,Nigeria,8,0.64
+cassava + okra,Vegetable-based,1,Nigeria,8,1.83
+natural fallow,Unidentified (single-crop label),1,Ethiopia,8,1.2
+cowpea + finger millet,Cereal + legume,1,Senegal,8,0.7
+fodder tree + unspecified fodder grass,Tree-based (agroforestry / perennial),1,Egypt,8,1.77
+cowpea + okra,Vegetable-based,1,Cameroon,8,1.58
+cowpea + maize + okra,Multi-crop (3+ crops),1,Cameroon,8,1.71
+cowpea + millet (unspecified),Cereal + legume,1,Niger,8,1.43
+maize + sorghum,Cereal + cereal,1,Kenya,8,1.04
+maize + pearl millet,Cereal + cereal,1,Kenya,8,0.59
+common bean + maize + pearl millet,Multi-crop (3+ crops),1,Kenya,8,0.3
+common bean + maize + pearl millet + sorghum,Multi-crop (3+ crops),1,Kenya,8,0.52
+fava bean + maize,Cereal + legume,1,Ethiopia,7,1.19
+maize + mucuna + sunhemp,Multi-crop (3+ crops),1,South Africa,6,1
+butter bean + maize + yam,Multi-crop (3+ crops),1,Nigeria,6,0.82
+cassava + maize + yam,Multi-crop (3+ crops),1,Nigeria,6,0.62
+butter bean + cassava + maize,Multi-crop (3+ crops),1,Nigeria,6,0.74
+cassava + pepper,Vegetable-based,1,Nigeria,6,1.83
+common bean + tomato,Vegetable-based,1,Egypt,6,1.18
+common vetch + finger millet,Cereal + legume,1,Ethiopia,6,1.07
+lupin + teff,Cereal + legume,1,Ethiopia,6,1.27
+maize,Unidentified (single-crop label),1,Kenya,6,0.07
+okra + tomato,Vegetable-based,1,Nigeria,6,0.93
+maize + melon,Vegetable-based,1,Nigeria,5,1.31
+cassava + melon,Vegetable-based,1,Nigeria,5,1.69
+common bean + finger millet,Cereal + legume,1,Ethiopia,5,1.74
+butter bean + maize,Cereal + legume,1,Rwanda,4,1.26
+groundnut + rice,Cereal + legume,1,Cameroon,4,0.87
+cassava + groundnut + maize,Multi-crop (3+ crops),1,Nigeria,4,1.92
+cassava + cowpea + maize,Multi-crop (3+ crops),1,Nigeria,4,1.91
+cassava + pumpkin,Vegetable-based,1,Nigeria,4,1.56
+finger millet + mung bean,Cereal + legume,1,Senegal,4,0.77
+barley + fodder tree,Tree-based (agroforestry / perennial),1,Egypt,4,2.32
+fodder tree + pearl millet,Tree-based (agroforestry / perennial),1,Egypt,4,1.29
+rye + unspecified fodder grass,Other,1,Egypt,4,1.25
+lablab,Unidentified (single-crop label),1,South Africa,3,1.43
+finger millet + purple vetch,Cereal + legume,1,Ethiopia,3,0.91
+potato + velvet bean,Root/tuber + legume,1,Cameroon,3,1.9
+cowpea,Unidentified (single-crop label),1,Kenya,3,1
+cassava + chili,Vegetable-based,1,Nigeria,3,2.42
+common bean + okra,Vegetable-based,1,Cameroon,2,0.76
+common bean + maize + okra,Multi-crop (3+ crops),1,Cameroon,2,0.46
+acacia senegal + hibiscus,Tree-based (agroforestry / perennial),1,Sudan,2,3.3
+acacia senegal + sorghum,Tree-based (agroforestry / perennial),1,Sudan,2,3.7
+acacia senegal + sesame,Tree-based (agroforestry / perennial),1,Sudan,2,3.8
+onion + tomato,Vegetable-based,1,Kenya,2,1.58
+kale + tomato,Vegetable-based,1,Kenya,2,1.69
+maize + tomato,Vegetable-based,1,Kenya,2,1.17
+common bean + maize + mung bean,Multi-crop (3+ crops),1,Ethiopia,2,1.47
+hairy vetch + maize,Cereal + legume,1,Ethiopia,2,1.5
+maize + watermelon,Vegetable-based,1,Mozambique,1,1.13
+grevillea robusta + pepper,Tree-based (agroforestry / perennial),1,Tanzania,1,4.47
+cardamom + grevillea robusta + pepper,Tree-based (agroforestry / perennial),1,Tanzania,1,4.08
+gliricidia sp + pepper,Tree-based (agroforestry / perennial),1,Tanzania,1,2.22
+cardamom + gliricidia sp + pepper,Tree-based (agroforestry / perennial),1,Tanzania,1,2.68

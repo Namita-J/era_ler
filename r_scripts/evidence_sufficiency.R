@@ -2,8 +2,8 @@
 # system, geography (incl. ERA agro-ecological zone) and time. Counts are of unique papers,
 # because one paper can contribute many LER values.
 #
-# Input (read only): outputs/LER_all.csv; ERA raw extraction (Data.Out) and master codes, used
-#   only to fill missing site metadata and to identify water-management practice codes.
+# Input (read only): outputs/LER_all.csv; ERA raw extraction (Data.Out), used only to fill
+#   missing site metadata.
 # Output: outputs/evidence_sufficiency/{data,lookups,tables,figures}
 # Run from the project root (era_ler/).
 
@@ -30,7 +30,6 @@ n_input <- nrow(L)
 
 bundle <- file.path("downloaded_data", "era_agronomy_bundle_2025-05-12")
 if (!exists("agronomic_metadata")) agronomic_metadata <- fromJSON(list.files(bundle, "^agronomic_.*json$", full.names = TRUE))
-if (!exists("mastercodes")) mastercodes <- fromJSON(list.files(bundle, "^era_master_codes.*json$", full.names = TRUE))
 
 # fill missing site metadata (country, coordinates, author, year) from the raw extraction,
 # for rows whose metadata could not be copied from a compiled row (raw-only papers)
@@ -129,20 +128,10 @@ group_levels <- c("Cereal + legume", "Cereal + cereal", "Root/tuber + legume", "
                   "Unidentified (single-crop label)")
 L[, system_group := factor(system_group, levels = intersect(group_levels, unique(system_group)))]
 
-# ---- 3. Water-management / irrigation information ------------------------------------------
-# Treatment fields describe the LER observation itself for rows from the compiled table and rows
-# calculated from yields; for reported_raw rows they were copied from another row of the paper,
-# so they are not used for those rows.
-water_codes <- as.data.table(mastercodes$prac)[Theme %in% c("Blue Water Management", "Green Water Management"), Code]
-L[, obs_specific_treatment := LER.Source != "reported_raw"]
-tcols <- paste0("T", 1:13)
-L[, t_water := apply(as.matrix(.SD), 1, function(r) paste(sort(intersect(r, water_codes)), collapse = " ")), .SDcols = tcols]
-L[, plist_water := sapply(strsplit(fifelse(is.na(plist), "", plist), "-"), function(v) any(v %in% water_codes))]
-
 # ---- 4. Per-paper summary ----------------------------------------------------------------------
 per_paper <- L[, .(
   Author = Author[1], Year_published = Date[1], Country = paste(sort(unique(na.omit(Country))), collapse = "; "),
-  n_obs = .N, n_sites = uniqueN(Site.ID),
+  n_obs = .N,
   n_calendar_years = uniqueN(unlist(years)),
   n_single_years = uniqueN(year_start[year_precision == "single year"]),   # distinct years reported separately
   system_groups = paste(sort(unique(as.character(system_group))), collapse = "; ")
@@ -151,7 +140,9 @@ per_paper <- L[, .(
 # ---- 5. Systems ----------------------------------------------------------------------------
 group_tab <- L[, .(combinations = uniqueN(combination), papers = uniqueN(paper), countries = uniqueN(na.omit(Country)),
                    LER_values = .N), by = system_group][order(system_group)]
-combo_tab <- L[, .(papers = uniqueN(paper), LER_values = .N), by = .(combination, system_group)][order(-papers, -LER_values)]
+combo_tab <- L[, .(papers = uniqueN(paper), countries = paste(sort(unique(na.omit(Country))), collapse = ", "),
+                   LER_values = .N, LER_median = round(median(MeanT, na.rm = TRUE), 2)),
+               by = .(combination, system_group)][order(-papers, -LER_values)]
 tab(group_tab, "02_system_groups"); tab(combo_tab, "02_crop_combinations")
 
 # ---- 6. Geography -------------------------------------------------------------------------
@@ -178,13 +169,6 @@ p_country <- ggplot() + geom_sf(data = country_papers, aes(fill = papers), color
   theme(axis.text = element_blank(), axis.title = element_blank(), panel.grid = element_blank()) +
   labs(title = "Papers per country")
 fig(p_country, "03b_country_papers", 8, 8)
-
-L[!is.na(location), `:=`(cell_lat = floor(Latitude) + 0.5, cell_lon = floor(Longitude) + 0.5)]
-grid_tab <- L[!is.na(location), .(papers = uniqueN(paper)), by = .(cell_lat, cell_lon)]
-p_grid <- base_map() +
-  geom_tile(data = grid_tab, aes(cell_lon, cell_lat, fill = papers), width = 1, height = 1, color = "gray30", linewidth = 0.1) +
-  scale_fill_viridis_c(option = "mako", direction = -1, name = "Papers") + labs(title = "Papers per 1-degree cell")
-fig(p_grid, "03c_grid_papers", 8, 8)
 
 aez_order <- aez_tab$AEZ
 p_aez <- ggplot(aez_tab, aes(papers, factor(AEZ, levels = rev(aez_order)))) + geom_col(fill = "#2a6f97", width = 0.7) +
@@ -233,32 +217,9 @@ p_ypp <- ggplot(years_per_paper, aes(n_years, papers)) + geom_col(fill = "#2a6f9
   labs(x = "Number of years reported", y = "Papers", title = "Number of years each paper reports LER for") + theme_es
 fig(p_ypp, "05b_years_per_paper", 8, 5)
 
-# ---- 9. Papers with repeated conditions ---------------------------------------------------------
-season_multi <- L[year_precision == "single year", .(n_seasons = uniqueN(M.Year)), by = .(paper, year = year_start)][, .(multi_season = any(n_seasons > 1)), by = paper]
-water <- L[, .(
-  irrigated_and_rainfed_obs = any(obs_specific_treatment & Irrigation.T %in% TRUE) & any(obs_specific_treatment & Irrigation.T %in% FALSE),
-  irrigation_contrast_in_comparison = any(obs_specific_treatment & !is.na(Irrigation.C) & !is.na(Irrigation.T) & Irrigation.C != Irrigation.T),
-  water_mgmt_treatment = any(obs_specific_treatment & plist_water) | uniqueN(t_water[obs_specific_treatment]) > 1
-), by = paper]
-cand <- merge(per_paper, season_multi, by = "paper", all.x = TRUE)
-cand <- merge(cand, water, by = "paper")
-cand[is.na(multi_season), multi_season := FALSE]
-cand[, `:=`(multi_year = n_single_years >= 2, multi_site = n_sites >= 2)]
-cand[, water_contrast := irrigated_and_rainfed_obs | irrigation_contrast_in_comparison | water_mgmt_treatment]
-cand[, repeated_conditions := multi_year | multi_season | water_contrast]
-setorder(cand, -repeated_conditions, -n_single_years)
-tab(cand, "06_repeated_conditions_by_paper")
-cand_summary <- data.table(
-  feature = c("2+ years reported separately", "2+ seasons within a year", "2+ sites",
-              "Water / irrigation contrast", "Any repeated condition (years, seasons or water)"),
-  papers = c(sum(cand$multi_year), sum(cand$multi_season), sum(cand$multi_site), sum(cand$water_contrast), sum(cand$repeated_conditions)))
-cand_summary[, pct_of_papers := round(100 * papers / nrow(cand), 1)]
-tab(cand_summary, "06_repeated_conditions_summary")
-
-# ---- 10. Derived dataset ----------------------------------------------------------------------
+# ---- 9. Derived dataset ----------------------------------------------------------------------
 derived <- L[, .(obs_id, paper, Author, Date, Country, ISO.3166.1.alpha.3, Region, AEZ, Site.ID, Latitude, Longitude,
                  location, M.Year, year_precision, years = sapply(years, paste, collapse = ";"), year_start,
-                 Product.Simple, Diversity, combination, combination_source, crop_types, system_group, T.Descrip, LER = MeanT, LER.Source,
-                 Irrigation.C, Irrigation.T, water_practices_T = t_water, water_practice_in_plist = plist_water)]
+                 Product.Simple, Diversity, combination, combination_source, crop_types, system_group, T.Descrip, LER = MeanT, LER.Source)]
 fwrite(derived, file.path(es_dir, "data", "LER_evidence_structure.csv"))
 stopifnot(nrow(derived) == n_input)
