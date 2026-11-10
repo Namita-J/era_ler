@@ -1,0 +1,109 @@
+paper,Author,Year_published,Country,Region,LER_source,n_obs,n_paper_sites,n_locations,n_site_years,n_calendar_years,n_single_years,any_multi_year_average,any_no_calendar_year,first_year,last_year,n_systems,n_system_groups,system_groups
+NN0142,Rusinamhodzi L,2012,Mozambique,Eastern Africa,reported,112,2,2,4,3,3,FALSE,FALSE,2009,2011,2,1,Cereal + legume
+DK0117,Midega,2014,Kenya,Eastern Africa,reported,80,1,1,16,8,8,FALSE,FALSE,2005,2012,5,1,Cereal + legume
+NN0130.3,Ibeawuchi IC,2008,Nigeria,Western Africa,reported,74,1,1,2,2,2,FALSE,FALSE,2001,2002,9,2,Multi-crop (3+ crops); Root/tuber + cereal
+AG0078,Sanou,2016,Burkina Faso,Western Africa,reported,72,1,1,2,2,2,FALSE,FALSE,2013,2014,1,1,Cereal + legume
+DK0073,Kermah,2017,Ghana,Western Africa,reported_raw,50,6,2,6,2,0,TRUE,FALSE,2013,2014,1,1,Cereal + legume
+AC0010,Chabi-Olaye,2005,Cameroon,Middle Africa,reported_raw,48,1,1,4,2,2,FALSE,FALSE,2002,2003,3,2,Cereal + legume; Root/tuber + cereal
+HK0233,Kavamahanga F,1995,Rwanda,Eastern Africa,reported,44,1,1,1,2,0,TRUE,FALSE,1991,1992,2,1,Cereal + legume
+JO0131,Metwally,2019,Egypt,Northern Africa,reported_raw,40,1,1,1,2,0,TRUE,FALSE,2016,2017,1,1,Cereal + legume
+NM0030,Songa,2007,Kenya,Eastern Africa,reported_raw,40,2,2,8,3,3,FALSE,FALSE,2003,2005,5,3,Cereal + cereal; Cereal + legume; Multi-crop (3+ crops)
+LM0173,Jama,1995,Kenya,Eastern Africa,reported_raw,36,1,1,6,3,3,FALSE,FALSE,1989,1991,2,1,Tree-based (agroforestry / perennial)
+AC0002,Farsia Djidjonri,2021,Cameroon,Middle Africa,reported_raw,32,2,2,4,2,2,FALSE,FALSE,2016,2017,4,3,Cereal + legume; Multi-crop (3+ crops); Vegetable-based
+JS0078,Dapaah HK,2003,Ghana,Western Africa,reported,30,3,3,5,2,2,FALSE,FALSE,1998,1999,1,1,Multi-crop (3+ crops)
+HK0093,Olasantan FO,1994,Nigeria,Western Africa,reported,30,1,1,2,2,2,FALSE,FALSE,1989,1990,1,1,Root/tuber + cereal
+CJ0124,Hoeschle-Zeledon,2021,Ghana,Western Africa,reported_raw,24,2,2,6,3,3,FALSE,FALSE,2014,2016,2,1,Cereal + legume
+JO0028,Chichongue,2022,Mozambique,Eastern Africa,reported_raw,24,1,1,2,2,2,FALSE,FALSE,2017,2018,3,1,Cereal + legume
+NN0420,Rahman,2021,Ghana,Western Africa,reported_raw,24,2,2,6,3,3,FALSE,FALSE,2014,2016,2,1,Cereal + legume
+AC0168,Bado,2021,Niger,Western Africa,calculated_automatic,24,1,1,3,3,3,FALSE,FALSE,2016,2018,1,1,Cereal + legume
+NN0250,Taddesse G,2007,Ethiopia,Eastern Africa,reported,20,2,2,3,2,2,FALSE,FALSE,2003,2004,1,1,Cereal + legume
+JS0116,Abbas M,2001,Egypt,Northern Africa,reported,20,1,1,1,0,0,FALSE,TRUE,,,4,2,Other; Tree-based (agroforestry / perennial)
+CJ0163,Asiwe J.N.A.,2021,South Africa,Southern Africa,reported_raw,20,1,1,2,2,2,FALSE,FALSE,2016,2017,1,1,Cereal + legume
+AG0120,Tsujimoto,2015,Mozambique,Eastern Africa,reported,18,3,3,3,1,1,FALSE,FALSE,2013,2013,1,1,Cereal + legume
+EO0019,Salau,2014,Nigeria,Western Africa,reported,18,2,1,2,2,2,FALSE,FALSE,2008,2009,3,1,Vegetable-based
+NN0058,Reddy KC,1992,Niger,Western Africa,reported,18,1,1,3,3,3,FALSE,FALSE,1986,1988,1,1,Cereal + legume
+AC0007,Ndakidemi,2007,South Africa,Southern Africa,reported_raw,18,1,1,2,2,2,FALSE,FALSE,2003,2004,1,1,Cereal + legume
+CJ0030,Mugi-Ngenga,2022,Tanzania,Eastern Africa,reported_raw,18,1,0,2,2,2,FALSE,FALSE,2018,2019,2,1,Cereal + legume
+CJ0042,El-Mehy,2023,Egypt,Northern Africa,reported_raw,18,1,1,2,2,2,FALSE,FALSE,2020,2021,1,1,Cereal + legume
+LM0279,"",2000,Kenya,Eastern Africa,reported_raw,18,1,1,9,5,5,FALSE,FALSE,1991,1995,3,2,Tree-based (agroforestry / perennial); Unidentified (single-crop label)
+NN0441,Nwokoro,2022,Nigeria,Western Africa,calculated_automatic,18,3,3,3,1,1,FALSE,FALSE,2018,2018,1,1,Root/tuber + cereal
+HK0249,Siame J,1998,Zambia,Eastern Africa,reported,16,2,1,4,2,2,FALSE,FALSE,1991,1992,1,1,Cereal + legume
+JS0164,Raddad EY,2007,Sudan,Northern Africa,reported,16,1,1,4,4,4,FALSE,FALSE,1999,2002,1,1,Tree-based (agroforestry / perennial)
+AN0005,Galil,2015,Egypt,Northern Africa,reported,16,1,1,1,2,0,TRUE,FALSE,2010,2012,1,1,Other
+JO0134,Maman,2019,Niger,Western Africa,reported_raw,16,2,2,4,2,2,FALSE,FALSE,2016,2017,1,1,Other
+HK0135,Zuofa K,1992,Nigeria,Western Africa,reported,14,1,1,1,1,1,FALSE,FALSE,1987,1987,4,2,Multi-crop (3+ crops); Root/tuber + cereal
+AG0137,Tsegay,2018,Ethiopia,Eastern Africa,reported,14,1,1,2,2,2,FALSE,FALSE,2014,2015,1,1,Cereal + legume
+NJ0148,Chimonyo,2016,South Africa,Southern Africa,reported,12,1,1,2,2,2,FALSE,FALSE,2014,2015,2,2,Cereal + legume; Vegetable-based
+JS0064,Wright JP,1991,Gambia,Western Africa,reported,12,2,1,2,1,1,FALSE,FALSE,1987,1987,1,1,Cereal + legume
+AN0062,Trail,2016,Senegal,Western Africa,reported,12,2,2,2,2,0,TRUE,FALSE,2013,2014,2,1,Cereal + legume
+AC0043,Bitew,2021,Ethiopia,Eastern Africa,reported_raw,12,2,2,2,2,0,TRUE,FALSE,2014,2016,1,1,Cereal + legume
+CJ0037,"",2018,Nigeria,Western Africa,reported_raw,12,1,1,3,3,3,FALSE,FALSE,2013,2015,1,1,Root/tuber + cereal
+DM0016,Tehulie,2023,Ethiopia,Eastern Africa,reported_raw,12,1,1,3,3,3,FALSE,FALSE,2018,2020,1,1,Tree-based (agroforestry / perennial)
+JO0101,Gebremedhin,2021,Ethiopia,Eastern Africa,reported_raw,12,2,2,2,1,1,FALSE,FALSE,2018,2018,1,1,Unidentified (single-crop label)
+NN0445,Parwada,2021,Zimbabwe,Eastern Africa,reported_raw,12,1,1,3,3,3,FALSE,FALSE,2015,2017,1,1,Cereal + legume
+AG0117,Kwena,2017,Kenya,Eastern Africa,calculated_automatic,12,1,1,4,4,4,FALSE,FALSE,2010,2013,1,1,Cereal + legume
+CJ0074,Nassary,2020,Tanzania,Eastern Africa,calculated_automatic,11,3,1,6,2,2,FALSE,FALSE,2015,2016,1,1,Cereal + legume
+HK0181,Olasantan FO,2007,Nigeria,Western Africa,reported,10,1,1,2,2,2,FALSE,FALSE,2002,2003,2,1,Vegetable-based
+CJ0004,Olorunnisomo,2009,Nigeria,Western Africa,reported_raw,10,1,1,2,2,2,FALSE,FALSE,2006,2007,1,1,Vegetable-based
+NN0430,Muoneke,2007,Nigeria,Western Africa,reported_raw,10,1,1,2,1,1,FALSE,FALSE,2004,2004,1,1,Cereal + legume
+CJ0105,Keba,2022,Ethiopia,Eastern Africa,reported_raw,9,1,1,1,1,1,FALSE,FALSE,2020,2020,2,1,Cereal + legume
+NM0028,Oseni,2010,Nigeria,Western Africa,reported_raw,9,3,3,3,0,0,FALSE,TRUE,,,1,1,Cereal + legume
+AG0104,Mbah,2018,Nigeria,Western Africa,reported,8,1,1,1,2,0,TRUE,FALSE,2014,2015,1,1,Root/tuber + legume
+DK0016,Alemayehu,2017,Ethiopia,Eastern Africa,reported,8,1,1,1,2,0,TRUE,FALSE,2012,2013,1,1,Unidentified (single-crop label)
+CJ0003,Rapholo,2019,South Africa,Southern Africa,reported_raw,8,2,2,4,2,2,FALSE,FALSE,2016,2017,1,1,Cereal + legume
+CJ0125,Abdoul-Karim,2022,Niger,Western Africa,reported_raw,8,1,1,2,2,2,FALSE,FALSE,2020,2021,1,1,Cereal + legume
+JO0001,Berdjour,2020,Ghana,Western Africa,reported_raw,8,1,1,2,2,2,FALSE,FALSE,2015,2016,1,1,Cereal + legume
+NN0414,Mbanyele,2021,Zimbabwe,Eastern Africa,calculated_automatic,8,2,2,4,3,1,TRUE,FALSE,2015,2017,1,1,Cereal + legume
+LM0141,Tsubo M,2003,South Africa,Southern Africa,reported,7,1,1,3,3,3,FALSE,FALSE,1997,2001,1,1,Cereal + legume
+SP0002,Nurgi,2023,Ethiopia,Eastern Africa,reported_raw,7,1,1,1,2,0,TRUE,FALSE,2018,2019,1,1,Cereal + legume
+NN0175.2,Murungu FS,2011,South Africa,Southern Africa,reported,6,1,1,2,2,2,FALSE,FALSE,2008,2009,1,1,Multi-crop (3+ crops)
+DK0148,Rusinamhodzi,2017,Tanzania,Eastern Africa,reported,6,1,1,1,2,0,TRUE,FALSE,2012,2015,1,1,Cereal + legume
+AN0076,Singh,2017,Cameroon,Middle Africa,reported,6,1,1,1,1,1,FALSE,FALSE,2014,2014,3,2,Multi-crop (3+ crops); Vegetable-based
+HK0043,Ayoola OT,2006,Nigeria,Western Africa,reported,6,2,2,2,2,0,TRUE,FALSE,2000,2001,1,1,Multi-crop (3+ crops)
+JS0055,Zougmore R,2000,Burkina Faso,Western Africa,reported,6,1,1,3,3,3,FALSE,FALSE,1993,1995,1,1,Cereal + legume
+JS0152,Fadl KEM,2012,Sudan,Northern Africa,reported,6,1,1,1,1,1,FALSE,FALSE,2003,2003,3,1,Tree-based (agroforestry / perennial)
+AG0008,El-Gaid,2014,Egypt,Northern Africa,reported,6,1,1,2,2,2,FALSE,FALSE,2011,2012,1,1,Vegetable-based
+AC0012,Ramkat,2008,Kenya,Eastern Africa,reported_raw,6,1,1,2,2,2,FALSE,FALSE,2004,2006,3,1,Vegetable-based
+JO0104,Hunegnaw,2022,Ethiopia,Eastern Africa,reported_raw,6,1,1,1,2,0,TRUE,FALSE,2016,2017,1,1,Cereal + legume
+AG0084,Naab,2017,Ghana,Western Africa,calculated_automatic,6,1,1,2,2,2,FALSE,FALSE,2010,2012,1,1,Cereal + legume
+AG0136,Metwally,2017,Egypt,Northern Africa,calculated_automatic,6,1,1,1,2,0,TRUE,FALSE,2015,2016,1,1,Cereal + legume
+HK0012,Adeniyi OR,2001,Nigeria,Western Africa,calculated_automatic,6,1,1,2,2,2,FALSE,FALSE,1997,1998,1,1,Vegetable-based
+JS0195,Myaka FA,1996,Tanzania,Eastern Africa,calculated_automatic,6,1,1,3,3,3,FALSE,FALSE,1991,1993,1,1,Other
+HK0205,Fandika IR,2012,Malawi,Eastern Africa,calculated_automatic,5,1,1,2,2,2,FALSE,FALSE,2006,2007,1,1,Cereal + legume
+JO0011,Agegnehu,2006,Ethiopia,Eastern Africa,calculated_automatic,5,1,1,1,3,0,TRUE,FALSE,2001,2003,1,1,Cereal + legume
+JO0078,Bitew,2020,Ethiopia,Eastern Africa,calculated_automatic,5,1,0,1,1,1,FALSE,FALSE,2018,2018,1,1,Cereal + legume
+AG0025,Isaacs,2016,Rwanda,Eastern Africa,reported,4,2,2,2,2,0,TRUE,FALSE,2011,2012,1,1,Cereal + legume
+EO0024,Mthembu,2017,South Africa,Southern Africa,reported,4,1,1,4,4,4,FALSE,FALSE,2004,2008,2,2,Cereal + legume; Unidentified (single-crop label)
+AG0091,Mballa,2017,Cameroon,Middle Africa,reported,4,1,1,1,1,1,FALSE,FALSE,2015,2015,1,1,Cereal + legume
+HK0041,Awe GO,2009,Nigeria,Western Africa,reported,4,1,1,1,1,1,FALSE,FALSE,2006,2006,1,1,Vegetable-based
+LM0066,Kolawole GO,2012,Nigeria,Western Africa,reported,4,1,1,2,2,2,FALSE,FALSE,2007,2008,1,1,Cereal + legume
+CJ0026,Mupangwa,2019,Zambia,Eastern Africa,reported_raw,4,1,1,4,4,4,FALSE,FALSE,2012,2015,1,1,Cereal + legume
+JO0037,Worku,2014,Ethiopia,Eastern Africa,reported_raw,4,1,1,1,2,0,TRUE,FALSE,2007,2009,3,2,Cereal + legume; Multi-crop (3+ crops)
+JO0042,Namatsheva,2021,Zimbabwe,Eastern Africa,reported_raw,4,1,1,2,2,2,FALSE,FALSE,2018,2019,1,1,Cereal + legume
+JS0204,Reyes,2009,Tanzania,Eastern Africa,reported_raw,4,1,1,1,1,1,FALSE,FALSE,2006,2006,4,1,Tree-based (agroforestry / perennial)
+NN0412,Bekele,2021,Ethiopia,Eastern Africa,reported_raw,4,1,1,2,2,2,FALSE,FALSE,2019,2020,2,1,Cereal + legume
+NN0490,Abbas,2022,Egypt,Northern Africa,reported_raw,4,1,1,1,1,1,FALSE,FALSE,2021,2021,2,1,Cereal + legume
+AG0103,Thierfelder,2014,Zimbabwe,Eastern Africa,calculated_automatic,4,1,1,2,2,2,FALSE,FALSE,2010,2011,1,1,Cereal + legume
+DK0064,Falconnier,2016,Mali,Western Africa,reported_pLER_sum,4,1,1,1,2,0,TRUE,FALSE,2012,2014,2,1,Cereal + legume
+JS0042,Osman AN,2011,Burkina Faso,Western Africa,reported,3,1,1,1,1,1,FALSE,FALSE,2007,2007,1,1,Cereal + legume
+CJ0159,Tchapga,2023,Cameroon,Middle Africa,reported_raw,3,1,1,1,1,1,FALSE,FALSE,2021,2021,1,1,Root/tuber + legume
+HK0094,Olasantan FO,2007,Nigeria,Western Africa,calculated_automatic,3,1,1,1,1,1,FALSE,FALSE,2002,2002,1,1,Vegetable-based
+JS0179,Kimaro AA,2009,Tanzania,Eastern Africa,calculated_automatic,3,1,1,1,1,1,FALSE,FALSE,2004,2004,1,1,Cereal + legume
+SP0005,Fatumah,2021,Uganda,Eastern Africa,calculated_automatic,3,1,1,1,1,1,FALSE,FALSE,2018,2018,1,1,Cereal + legume
+HK0300,Rusinamhodzi L,2006,Zimbabwe,Eastern Africa,reported,2,1,1,1,1,1,FALSE,FALSE,2004,2004,1,1,Other
+NJ0075,Sahile,2018,Ethiopia,Eastern Africa,reported,2,1,1,1,1,1,FALSE,FALSE,2016,2016,1,1,Cereal + legume
+EO0094,Metwally,2018,Egypt,Northern Africa,reported,2,1,1,2,2,2,FALSE,FALSE,2013,2014,1,1,Cereal + legume
+AC0055,"",2012,Nigeria,Western Africa,reported_raw,2,1,1,2,2,2,FALSE,FALSE,2003,2004,1,1,Root/tuber + cereal
+CJ0047,Ndengu,2022,Malawi,Eastern Africa,reported_raw,2,1,0,1,2,0,TRUE,FALSE,2014,2015,1,1,Cereal + legume
+NM0004,Nassary,2019,Tanzania,Eastern Africa,reported_raw,2,1,1,1,3,0,TRUE,FALSE,2015,2017,1,1,Cereal + legume
+AN0081,Takim,2014,Nigeria,Western Africa,calculated_automatic,2,1,1,2,2,2,FALSE,FALSE,2009,2010,1,1,Cereal + legume
+DK0110,Masvaya,2017,Zimbabwe,Eastern Africa,calculated_automatic,2,1,1,1,1,1,FALSE,FALSE,2014,2014,1,1,Cereal + legume
+JS0006.1,Akonde,1996,Benin,Western Africa,calculated_automatic,2,1,1,1,1,1,FALSE,FALSE,1986,1986,1,1,Root/tuber + cereal
+NN0232,Workayehu,2011,Ethiopia,Eastern Africa,calculated_automatic,2,1,1,1,1,1,FALSE,FALSE,1996,1996,1,1,Cereal + legume
+JS0223,Vesterager JM,2008,Tanzania,Eastern Africa,reported,1,1,1,1,1,1,FALSE,FALSE,1997,1997,1,1,Cereal + legume
+AC0017,Nyirenda,2021,Malawi,Eastern Africa,reported_raw,1,1,1,1,9,0,TRUE,FALSE,2011,2019,1,1,Cereal + legume
+CJ0010,Musokwa,2021,South Africa,Southern Africa,reported_raw,1,1,1,1,1,1,FALSE,FALSE,2016,2016,1,1,Cereal + legume
+CJ0011,Yimer,2022,Ethiopia,Eastern Africa,reported_raw,1,1,1,1,2,0,TRUE,FALSE,2018,2019,1,1,Cereal + legume
+CJ0058,Munisse,2012,Mozambique,Eastern Africa,reported_raw,1,1,1,1,1,1,FALSE,FALSE,2010,2010,1,1,Vegetable-based
+CJ0057,Latati,2014,Algeria,Northern Africa,calculated_automatic,1,1,1,1,1,1,FALSE,FALSE,2013,2013,1,1,Cereal + legume
+HK0088,Olasantan FO,1998,Nigeria,Western Africa,calculated_automatic,1,1,1,1,1,1,FALSE,FALSE,1991,1991,1,1,Cereal + legume

@@ -1,0 +1,24 @@
+metric,value
+Unique papers,108
+LER observations,1496
+Paper-sites (paper x Site.ID),140
+"Geographic locations (unique coordinates, 0.01 deg)",118
+Paper-sites without coordinates,3
+Paper-sites recording several pooled sites,7
+Countries,22
+Unique study (calendar) years,36
+Site-years (paper x site x M.Year),259
+Site-years that are multi-year averages,32
+Site-years with no calendar year,4
+LER observations per paper: median,8
+LER observations per paper: IQR,4 - 18
+LER observations per paper: range,1 - 112
+Papers with one paper-site / several,85 / 23
+Papers with one location / several,89 / 19
+Papers covering one calendar year / several,31 / 77
+Papers with one system (combination) / several,79 / 29
+Papers with one system group / several,97 / 11
+% of observations from the top 5 papers,25.9
+% of observations from the top 10 papers,39.8
+% of site-years from the top 5 papers (ranked by site-years),17.4
+% of site-years from the top 10 papers (ranked by site-years),27.8

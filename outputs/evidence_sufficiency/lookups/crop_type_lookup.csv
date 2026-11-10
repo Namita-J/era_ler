@@ -1,0 +1,57 @@
+crop,crop_type
+barley,cereal
+finger millet,cereal
+maize,cereal
+millet (unspecified),cereal
+pearl millet,cereal
+rice,cereal
+rye,cereal
+sorghum,cereal
+teff,cereal
+wheat,cereal
+natural fallow,fallow
+cotton,fibre
+unspecified fodder grass,forage grass
+african yam bean,legume
+butter bean,legume
+common bean,legume
+common vetch,legume
+cowpea,legume
+crotalaria ochrolueca,legume
+fava bean,legume
+groundnut,legume
+hairy vetch,legume
+lablab,legume
+lupin,legume
+mucuna,legume
+mung bean,legume
+pigeon pea,legume
+purple vetch,legume
+soybean,legume
+sunhemp,legume
+velvet bean,legume
+sesame,oilseed
+hibiscus,other crop
+cassava,root/tuber
+potato,root/tuber
+yam,root/tuber
+acacia senegal,tree/perennial
+banana,tree/perennial
+cardamom,tree/perennial
+coffee (arabica),tree/perennial
+fodder tree,tree/perennial
+gliricidia sp,tree/perennial
+grevillea robusta,tree/perennial
+leucaena leucocephala,tree/perennial
+senna siamea,tree/perennial
+amaranth,vegetable
+calabash,vegetable
+chili,vegetable
+kale,vegetable
+melon,vegetable
+okra,vegetable
+onion,vegetable
+pepper,vegetable
+pumpkin,vegetable
+tomato,vegetable
+watermelon,vegetable

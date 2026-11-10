@@ -1,0 +1,5 @@
+field,rows_missing,papers_affected,excluded_from
+Country,0,0,country / region tables and maps
+Coordinates,25,3,location map and grid maps
+Calendar experiment year,29,2,year / decade figures
+System (crop combination identified),32,4,kept as its own group in system analyses

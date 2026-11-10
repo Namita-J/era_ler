@@ -1,0 +1,89 @@
+combination,crop_types,system_group
+maize + pearl millet,cereal,Cereal + cereal
+maize + sorghum,cereal,Cereal + cereal
+barley + fava bean,cereal + legume,Cereal + legume
+butter bean + maize,cereal + legume,Cereal + legume
+common bean + finger millet,cereal + legume,Cereal + legume
+common bean + maize,cereal + legume,Cereal + legume
+common bean + sorghum,cereal + legume,Cereal + legume
+common vetch + finger millet,cereal + legume,Cereal + legume
+cowpea + finger millet,cereal + legume,Cereal + legume
+cowpea + maize,cereal + legume,Cereal + legume
+cowpea + millet (unspecified),cereal + legume,Cereal + legume
+cowpea + pearl millet,cereal + legume,Cereal + legume
+cowpea + sorghum,cereal + legume,Cereal + legume
+crotalaria ochrolueca + maize,cereal + legume,Cereal + legume
+fava bean + maize,cereal + legume,Cereal + legume
+finger millet + mung bean,cereal + legume,Cereal + legume
+finger millet + purple vetch,cereal + legume,Cereal + legume
+groundnut + maize,cereal + legume,Cereal + legume
+groundnut + rice,cereal + legume,Cereal + legume
+hairy vetch + maize,cereal + legume,Cereal + legume
+lablab + maize,cereal + legume,Cereal + legume
+lupin + teff,cereal + legume,Cereal + legume
+maize + mung bean,cereal + legume,Cereal + legume
+maize + pigeon pea,cereal + legume,Cereal + legume
+maize + soybean,cereal + legume,Cereal + legume
+sorghum + soybean,cereal + legume,Cereal + legume
+african yam bean + cassava + maize,cereal + legume + root/tuber,Multi-crop (3+ crops)
+african yam bean + cassava + maize + yam,cereal + legume + root/tuber,Multi-crop (3+ crops)
+african yam bean + maize + yam,cereal + legume + root/tuber,Multi-crop (3+ crops)
+butter bean + cassava + maize,cereal + legume + root/tuber,Multi-crop (3+ crops)
+butter bean + cassava + maize + yam,cereal + legume + root/tuber,Multi-crop (3+ crops)
+butter bean + maize + yam,cereal + legume + root/tuber,Multi-crop (3+ crops)
+cassava + cowpea + maize,cereal + legume + root/tuber,Multi-crop (3+ crops)
+cassava + cowpea + maize + soybean,cereal + legume + root/tuber,Multi-crop (3+ crops)
+cassava + groundnut + maize,cereal + legume + root/tuber,Multi-crop (3+ crops)
+cassava + maize + watermelon,cereal + root/tuber + vegetable,Multi-crop (3+ crops)
+cassava + maize + yam,cereal + root/tuber,Multi-crop (3+ crops)
+common bean + maize + mung bean,cereal + legume,Multi-crop (3+ crops)
+common bean + maize + okra,cereal + legume + vegetable,Multi-crop (3+ crops)
+common bean + maize + pearl millet,cereal + legume,Multi-crop (3+ crops)
+common bean + maize + pearl millet + sorghum,cereal + legume,Multi-crop (3+ crops)
+cowpea + maize + okra,cereal + legume + vegetable,Multi-crop (3+ crops)
+maize + mucuna + sunhemp,cereal + legume,Multi-crop (3+ crops)
+cotton + cowpea,fibre + legume,Other
+cotton + wheat,cereal + fibre,Other
+pearl millet + sesame,cereal + oilseed,Other
+rye + unspecified fodder grass,cereal + forage grass,Other
+cassava + maize,cereal + root/tuber,Root/tuber + cereal
+maize + yam,cereal + root/tuber,Root/tuber + cereal
+cassava + cowpea,legume + root/tuber,Root/tuber + legume
+potato + velvet bean,legume + root/tuber,Root/tuber + legume
+acacia senegal + hibiscus,other crop + tree/perennial,Tree-based (agroforestry / perennial)
+acacia senegal + sesame,oilseed + tree/perennial,Tree-based (agroforestry / perennial)
+acacia senegal + sesame + sorghum,cereal + oilseed + tree/perennial,Tree-based (agroforestry / perennial)
+acacia senegal + sorghum,cereal + tree/perennial,Tree-based (agroforestry / perennial)
+banana + coffee (arabica),tree/perennial,Tree-based (agroforestry / perennial)
+barley + fodder tree,cereal + tree/perennial,Tree-based (agroforestry / perennial)
+cardamom + gliricidia sp + pepper,tree/perennial + vegetable,Tree-based (agroforestry / perennial)
+cardamom + grevillea robusta + pepper,tree/perennial + vegetable,Tree-based (agroforestry / perennial)
+fodder tree + pearl millet,cereal + tree/perennial,Tree-based (agroforestry / perennial)
+fodder tree + unspecified fodder grass,forage grass + tree/perennial,Tree-based (agroforestry / perennial)
+gliricidia sp + pepper,tree/perennial + vegetable,Tree-based (agroforestry / perennial)
+grevillea robusta,tree/perennial,Tree-based (agroforestry / perennial)
+grevillea robusta + pepper,tree/perennial + vegetable,Tree-based (agroforestry / perennial)
+leucaena leucocephala + maize,cereal + tree/perennial,Tree-based (agroforestry / perennial)
+maize + senna siamea,cereal + tree/perennial,Tree-based (agroforestry / perennial)
+cowpea,legume,Unidentified (single-crop label)
+lablab,legume,Unidentified (single-crop label)
+maize,cereal,Unidentified (single-crop label)
+natural fallow,fallow,Unidentified (single-crop label)
+sorghum,cereal,Unidentified (single-crop label)
+amaranth + maize,cereal + vegetable,Vegetable-based
+calabash + sorghum,cereal + vegetable,Vegetable-based
+cassava + chili,root/tuber + vegetable,Vegetable-based
+cassava + melon,root/tuber + vegetable,Vegetable-based
+cassava + okra,root/tuber + vegetable,Vegetable-based
+cassava + pepper,root/tuber + vegetable,Vegetable-based
+cassava + pumpkin,root/tuber + vegetable,Vegetable-based
+common bean + okra,legume + vegetable,Vegetable-based
+common bean + tomato,legume + vegetable,Vegetable-based
+cowpea + okra,legume + vegetable,Vegetable-based
+kale + tomato,vegetable,Vegetable-based
+maize + melon,cereal + vegetable,Vegetable-based
+maize + okra,cereal + vegetable,Vegetable-based
+maize + tomato,cereal + vegetable,Vegetable-based
+maize + watermelon,cereal + vegetable,Vegetable-based
+okra + tomato,vegetable,Vegetable-based
+onion + tomato,vegetable,Vegetable-based
